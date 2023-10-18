@@ -49,10 +49,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 
 * Delete all your local migration files
 * Recreate initial migration files containing your current model state
-* Fix the migration history on every of your environments
-
-
-""",
+* Fix the migration history on every of your environments""",
     ),
     dependencies=[
         'Django>=3.2',
