@@ -1,0 +1,4 @@
+include README.md
+include LICENSE.md
+recursive-exclude * *.pyc
+recursive-include django_migration_zero *.py *.html *.js *.cfg *.mo *.po

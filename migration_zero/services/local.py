@@ -10,7 +10,7 @@ from migration_zero.settings import MIGRATION_ZERO_APPS_DIR
 
 
 class ResetMigrationFiles:
-    help = "Remove all local migrations files and create new initial ones."
+    help = "Remove all local migrations files and create new initial ones."  # noqa: A003
 
     FILE_WHITELIST = ("__init__.py", "__pycache__")
 

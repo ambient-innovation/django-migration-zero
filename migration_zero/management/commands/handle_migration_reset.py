@@ -13,7 +13,7 @@ from migration_zero.settings import MIGRATION_ZERO_APPS_DIR
 
 
 class Command(BaseCommand):
-    help = "Prepares the database after resetting all migrations."
+    help = "Prepares the database after resetting all migrations."  # noqa: A003
 
     def handle(self, *args, **options):
         print("Starting migration zero database adjustments...")

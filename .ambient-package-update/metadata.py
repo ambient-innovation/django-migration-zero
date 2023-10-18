@@ -2,7 +2,6 @@ from ambient_package_update.metadata.author import PackageAuthor
 from ambient_package_update.metadata.constants import DEV_DEPENDENCIES, LICENSE_MIT
 from ambient_package_update.metadata.package import PackageMetadata
 from ambient_package_update.metadata.readme import ReadmeContent
-from ambient_package_update.metadata.ruff_ignored_inspection import RuffIgnoredInspection
 
 METADATA = PackageMetadata(
     package_name='django_migration_zero',
@@ -15,32 +14,45 @@ METADATA = PackageMetadata(
     company='Ambient Innovation: GmbH',
     license=LICENSE_MIT,
     license_year=2023,
-    development_status='5 - Production/Stable',
+    development_status='4 - Beta',
     readme_content=ReadmeContent(
-        tagline="""Welcome to the **django-pony-express** - class-based emails for Django shipping with a full test
-suite.
+        tagline="""Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
+        Django covering local changes and CI/CD pipeline adjustments.
 
-Similar to class-based view in Django core, this package provides a neat, DRY and testable (!) way to handle your
-emails in Django.""",
+This package implements the "migration zero" pattern to clean up your local migrations and provides convenient
+management commands to recreate your migration files and updating your migration history on your environments
+(like test or production systems).""",
         content="""## Features
 
-* Class-based structure for emails
-   * Avoid duplicate low-level setup
-   * Utilise inheritance and OOP benefits
-   * No duplicated templates for HTML and plain-text
-* Test suite to write proper unit-tests for your emails
-   * Access your test outbox like a Django queryset
+* Remove all existing local migration files and recreate them as initial migrations
+* Configuration singleton in Django admin to prepare your clean-up deployment
+* Management command for your pipeline to update Django's migration history table to reflect the changed migrations
 
-## Etymology
+## Motivation
 
-> The Pony Express was an American express mail service that used relays of horse-mounted riders. [...] During its
-> 18 months of operation, the Pony Express reduced the time for messages to travel between the east and west US
-> coast to about 10 days.
->
-> https://en.wikipedia.org/wiki/Pony_Express
+Working with any proper ORM will result in database changes which are reflected in migration files to update your
+different environment's database structure. These files are versioned in your repository and if you follow any of the
+most popular deployment approaches, they won't be needed when they are deployed on production. This means, they clutter
+your repo, might lead to merge conflicts in the future and will slow down your test setup.
 
-The name of this package combines the Django mascot (a pony) with a once quite successful mail service in the US.
-Ingenious, right?""",
+Django's default way of handling this is called "squashing". This approach is covered broadly in the
+(official documentation)[https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing. The main
+drawback here is, that you have to take care of circular dependencies between models. Depending on your project's
+size, this can take a fair amount of time.
+
+The main benefit of squashing migrations is, that the history stays intact, therefore it can be used for example in
+package which can be installed by anybody and you don't have control over their database.
+
+If you are working on a "regular" application, you have full control over your data(bases) and once everything has
+been applied on the "last" system, typically production, the migrations are obsolete. To avoid spending much time on
+fixing squashed migrations you won't need, you can use the "migration zero" pattern. In a nutshell, this means:
+
+* Delete all your local migration files
+* Recreate initial migration files containing your current model state
+* Fix the migration history on every of your environments
+
+
+""",
     ),
     dependencies=[
         'Django>=3.2',
@@ -50,4 +62,5 @@ Ingenious, right?""",
             *DEV_DEPENDENCIES,
         ],
     },
+    ruff_ignore_list=[],
 )
