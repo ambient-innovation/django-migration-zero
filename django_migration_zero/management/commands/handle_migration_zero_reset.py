@@ -33,8 +33,8 @@ class Command(BaseCommand):
                 logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
                 continue
 
-            logger.info(f"Processing {app_label!r}...")
-            call_command("migrate", fake=True, app_label=app_label, migration_name="zero")
+            logger.info(f"Pruning migration history for app {app_label!r}...")
+            call_command("migrate", app_label=app_label, prune=True)
 
         # Apply migrations via fake because the database is already up-to-date
         logger.info("Populating migration history.")

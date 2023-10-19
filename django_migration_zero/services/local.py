@@ -33,7 +33,7 @@ class ResetMigrationFiles:
             for migration_file in migration_file_list:
                 delete_file(filename=migration_file, app_label=app_label, dry_run=self.dry_run)
 
-        logger.info("\nRecreating new initial migration files...\n")
+        logger.info("Recreating new initial migration files...")
         call_command("makemigrations")
 
         logger.info("Process finished.")

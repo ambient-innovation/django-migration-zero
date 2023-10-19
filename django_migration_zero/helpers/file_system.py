@@ -53,7 +53,7 @@ def get_migration_files(*, app_label: str) -> list[str]:
             logger.info(f"Migration file {filename!r} detected.")
             migration_file_list.append(filename)
         else:
-            logger.debug(f"File {filename!r} ignored since it's not fitting the migration name pattern..")
+            logger.debug(f"File {filename!r} ignored since it's not fitting the migration name pattern.")
 
     return migration_file_list
 
@@ -66,5 +66,6 @@ def delete_file(*, filename: str, app_label: str, dry_run: bool = False) -> None
     if not dry_run:
         try:
             os.unlink(file_path)
+            logger.info(f"Deleted file {filename!r}.")
         except OSError:
             logger.warning(f"Unable to delete file {file_path!r}.")
