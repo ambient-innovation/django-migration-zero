@@ -1,5 +1,6 @@
 """
-Holistic implementation of "migration zero" pattern for Django covering local changes and CI/CD pipeline adjustments.
+Holistic implementation of "migration zero" pattern for Django covering local changes and in-production database
+adjustments.
 """
 
-__version__ = '1.0.0'
+__version__ = '0.1.0'

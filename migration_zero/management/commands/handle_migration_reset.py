@@ -23,7 +23,7 @@ class Command(BaseCommand):
             return
 
         # Reset migration history in database for all local apps
-        logger.info("> Resetting migration history for local apps...")
+        logger.info("Resetting migration history for local apps...")
 
         local_app_list = get_local_django_apps()
 
@@ -33,19 +33,19 @@ class Command(BaseCommand):
                 logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
                 continue
 
-            logger.info(f">> Processing {app_label!r}...")
+            logger.info(f"Processing {app_label!r}...")
             call_command("migrate", fake=True, app_label=app_label, migration_name="zero")
 
         # Apply migrations via fake because the database is already up-to-date
-        logger.info("> Populating migration history.")
+        logger.info("Populating migration history.")
         call_command("migrate", fake=True)
 
         # Check if migration tree is valid
-        logger.info("> Checking migration integrity.")
+        logger.info("Checking migration integrity.")
         migrate_check = call_command("migrate", check=True)
 
         if not migrate_check:
-            logger.info(">> All good.")
+            logger.info("All good.")
         else:
             raise InvalidMigrationTreeError(
                 'The command "migrate --check" returned a non-zero error code. '
@@ -53,7 +53,7 @@ class Command(BaseCommand):
             )
 
         # Process finished, deactivate migration zero switch
-        logger.info("> Deactivating migration zero switch in database.")
+        logger.info("Deactivating migration zero switch in database.")
         config_singleton.migration_imminent = False
         config_singleton.save()
 
