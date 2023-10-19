@@ -1,18 +1,16 @@
-import os
-from os.path import isdir
-from pathlib import Path
-
-from django.apps import apps
-from django.conf import settings
 from django.core.management import call_command
 
-from migration_zero.settings import MIGRATION_ZERO_APPS_DIR
+from migration_zero.helpers.file_system import (
+    delete_file,
+    get_local_django_apps,
+    get_migration_files,
+    has_migration_directory,
+)
+from migration_zero.helpers.logger import get_logger
 
 
 class ResetMigrationFiles:
     help = "Remove all local migrations files and create new initial ones."  # noqa: A003
-
-    FILE_WHITELIST = ("__init__.py", "__pycache__")
 
     dry_run: bool
 
@@ -22,26 +20,20 @@ class ResetMigrationFiles:
         self.dry_run = dry_run
 
     def process(self):
-        for app_config in apps.get_app_configs():
-            if str(Path(MIGRATION_ZERO_APPS_DIR)) in str(Path(app_config.path)):
-                print(f"Detected local app {app_config.label!r}...")
+        logger = get_logger()
+        local_app_list = get_local_django_apps()
 
-                possible_migration_dir = settings.ROOT_DIR + app_config.label + "migrations"
-                if isdir(possible_migration_dir):
-                    print("> Migration directory detected...")
+        for app_label in local_app_list:
+            if not has_migration_directory(app_label=app_label):
+                logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
+                continue
 
-                    for filename in os.listdir(possible_migration_dir):
-                        if filename not in self.FILE_WHITELIST:
-                            print(f">> Removing file {filename!r}.")
+            migration_file_list = get_migration_files(app_label=app_label)
 
-                            file_path = possible_migration_dir + filename
-                            if not self.dry_run:
-                                try:
-                                    os.unlink(file_path)
-                                except OSError:
-                                    print(f"Unable to delete file {file_path!r}.")
+            for migration_file in migration_file_list:
+                delete_file(filename=migration_file, app_label=app_label, dry_run=self.dry_run)
 
-        print("\nRecreating new initial migration files...\n")
+        logger.info("\nRecreating new initial migration files...\n")
         call_command("makemigrations")
 
-        print("Process finished.")
+        logger.info("Process finished.")

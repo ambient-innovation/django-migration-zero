@@ -1,67 +1,51 @@
-from os.path import isdir
-from pathlib import Path
-
-from django.apps import apps
-from django.conf import settings
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
-from django.utils import timezone
 
-from migration_zero.exceptions import InvalidMigrationTreeError, MissingMigrationZeroConfigRecordError
+from migration_zero.exceptions import InvalidMigrationTreeError
+from migration_zero.helpers.file_system import get_local_django_apps, has_migration_directory
+from migration_zero.helpers.logger import get_logger
 from migration_zero.models import MigrationZeroConfiguration
-from migration_zero.settings import MIGRATION_ZERO_APPS_DIR
 
 
 class Command(BaseCommand):
     help = "Prepares the database after resetting all migrations."  # noqa: A003
 
     def handle(self, *args, **options):
-        print("Starting migration zero database adjustments...")
+        logger = get_logger()
 
-        # Integrity check
-        number_records = MigrationZeroConfiguration.objects.all().count()
-        if number_records > 1:
-            raise MissingMigrationZeroConfigRecordError(
-                "Too many configuration records detected. There can only be one."
-            )
+        logger.info("Starting migration zero database adjustments...")
 
         # Fetch configuration singleton from database
-        config_singleton: MigrationZeroConfiguration = MigrationZeroConfiguration.objects.all().first()
-        if config_singleton:
-            print("> Configuration record found.")
-        else:
-            raise MissingMigrationZeroConfigRecordError("No configuration record found in the database.")
+        config_singleton = MigrationZeroConfiguration.objects.fetch_singleton()
 
         # If we are not planning to do a migration reset, we are done here
-        if not config_singleton.migration_imminent:
-            print("Switch not active. Skipping migration zero process.")
-            return
-
-        if not config_singleton.migration_date == timezone.now().date():
-            print("Security date doesn't match today. Skipping migration zero process.")
+        if not config_singleton.is_migration_applicable:
             return
 
         # Reset migration history in database for all local apps
-        print("> Resetting migration history for local apps...")
-        for app_config in apps.get_app_configs():
-            # Local apps have a path which contains the path of the Django app directory
-            if str(Path(MIGRATION_ZERO_APPS_DIR)) in str(Path(app_config.path)):
-                print(f">> Processing {app_config.label!r}...")
+        logger.info("> Resetting migration history for local apps...")
 
-                possible_migration_dir = settings.ROOT_DIR + app_config.label + "migrations"
-                if isdir(possible_migration_dir):
-                    call_command("migrate", fake=True, app_label=app_config.label, migration_name="zero")
+        local_app_list = get_local_django_apps()
+
+        for app_label in local_app_list:
+            # Local apps have a path which contains the path of the Django app directory
+            if not has_migration_directory(app_label=app_label):
+                logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
+                continue
+
+            logger.info(f">> Processing {app_label!r}...")
+            call_command("migrate", fake=True, app_label=app_label, migration_name="zero")
 
         # Apply migrations via fake because the database is already up-to-date
-        print("> Populating migration history.")
+        logger.info("> Populating migration history.")
         call_command("migrate", fake=True)
 
         # Check if migration tree is valid
-        print("> Checking migration integrity.")
+        logger.info("> Checking migration integrity.")
         migrate_check = call_command("migrate", check=True)
 
         if not migrate_check:
-            print(">> All good.")
+            logger.info(">> All good.")
         else:
             raise InvalidMigrationTreeError(
                 'The command "migrate --check" returned a non-zero error code. '
@@ -69,8 +53,8 @@ class Command(BaseCommand):
             )
 
         # Process finished, deactivate migration zero switch
-        print("> Deactivating migration zero switch in database.")
+        logger.info("> Deactivating migration zero switch in database.")
         config_singleton.migration_imminent = False
         config_singleton.save()
 
-        print("Process successfully finished.")
+        logger.info("Process successfully finished.")
