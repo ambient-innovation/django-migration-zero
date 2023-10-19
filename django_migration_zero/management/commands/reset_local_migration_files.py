@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from migration_zero.services.local import ResetMigrationFiles
+from django_migration_zero.services.local import ResetMigrationFiles
 
 
 class Command(BaseCommand):

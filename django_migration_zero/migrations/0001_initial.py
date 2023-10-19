@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     def create_initial_record(apps, schema_editor):
         print("Creating configuration record for migration zero.")
-        MigrationZeroConfiguration = apps.get_model("migration_zero", "MigrationZeroConfiguration")
+        MigrationZeroConfiguration = apps.get_model("django_migration_zero", "MigrationZeroConfiguration")
         MigrationZeroConfiguration.objects.create(migration_imminent=False, migration_date=datetime.date(1970, 1, 1))
 
     operations = [

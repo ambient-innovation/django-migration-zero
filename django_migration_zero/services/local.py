@@ -1,12 +1,12 @@
 from django.core.management import call_command
 
-from migration_zero.helpers.file_system import (
+from django_migration_zero.helpers.file_system import (
     delete_file,
     get_local_django_apps,
     get_migration_files,
     has_migration_directory,
 )
-from migration_zero.helpers.logger import get_logger
+from django_migration_zero.helpers.logger import get_logger
 
 
 class ResetMigrationFiles:

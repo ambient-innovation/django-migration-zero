@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from migration_zero.models import MigrationZeroConfiguration
+from django_migration_zero.models import MigrationZeroConfiguration
 
 
 @admin.register(MigrationZeroConfiguration)

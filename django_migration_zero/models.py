@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from migration_zero.helpers.logger import get_logger
-from migration_zero.managers import MigrationZeroConfigurationManager
+from django_migration_zero.helpers.logger import get_logger
+from django_migration_zero.managers import MigrationZeroConfigurationManager
 
 
 class MigrationZeroConfiguration(models.Model):

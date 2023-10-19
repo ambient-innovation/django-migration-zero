@@ -1,10 +1,10 @@
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
-from migration_zero.exceptions import InvalidMigrationTreeError
-from migration_zero.helpers.file_system import get_local_django_apps, has_migration_directory
-from migration_zero.helpers.logger import get_logger
-from migration_zero.models import MigrationZeroConfiguration
+from django_migration_zero.exceptions import InvalidMigrationTreeError
+from django_migration_zero.helpers.file_system import get_local_django_apps, has_migration_directory
+from django_migration_zero.helpers.logger import get_logger
+from django_migration_zero.models import MigrationZeroConfiguration
 
 
 class Command(BaseCommand):

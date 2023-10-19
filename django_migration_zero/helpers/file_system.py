@@ -5,8 +5,8 @@ from pathlib import Path
 
 from django.apps import apps
 
-from migration_zero.helpers.logger import get_logger
-from migration_zero.settings import MIGRATION_ZERO_APPS_DIR
+from django_migration_zero.helpers.logger import get_logger
+from django_migration_zero.settings import MIGRATION_ZERO_APPS_DIR
 
 logger = get_logger()
 

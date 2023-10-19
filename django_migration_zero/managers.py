@@ -1,6 +1,6 @@
 from django.db import models
 
-from migration_zero.exceptions import MissingMigrationZeroConfigRecordError
+from django_migration_zero.exceptions import MissingMigrationZeroConfigRecordError
 
 
 class MigrationZeroConfigurationQuerySet(models.QuerySet):
