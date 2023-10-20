@@ -167,7 +167,7 @@ deps =
     django42: Django>=4.2,<4.3
 extras = dev,
 commands =
-    python coverage run pytest --ds settings tests
+    coverage run -m pytest --ds settings tests
 
 [gh-actions]
 python =
