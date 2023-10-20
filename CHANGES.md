@@ -1,5 +1,9 @@
 # Changelog
 
+* *0.1.5** (2023-10-20)
+  * Coverage
+  * Dependency updates
+
 * *0.1.4** (2023-10-20)
   * Unit-tests
 

@@ -1,5 +1,6 @@
 [![PyPI release](https://img.shields.io/pypi/v/django-migration-zero.svg)](https://pypi.org/project/django-migration-zero/)
 [![Downloads](https://static.pepy.tech/badge/django-migration-zero)](https://pepy.tech/project/django-migration-zero)
+[![Coverage](https://img.shields.io/badge/Coverage-100%25-success)](https://github.com/ambient-innovation/django-migration-zero/actions?workflow=CI)
 [![Linting](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Coding Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![Documentation Status](https://readthedocs.org/projects/django-migration-zero/badge/?version=latest)](https://django-migration-zero.readthedocs.io/en/latest/?badge=latest)
@@ -88,6 +89,12 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 - Run tests
   ````
   pytest --ds settings tests
+  ````
+
+- Check coverage
+  ````
+  coverage run -m pytest --ds settings tests
+  coverage report -m
   ````
 
 ### Git hooks (via pre-commit)

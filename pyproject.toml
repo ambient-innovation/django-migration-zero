@@ -12,8 +12,6 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",
     "Framework :: Django",
-    # todo das muss dynamisch werden
-    "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.0",
@@ -44,7 +42,7 @@ dev = [
    'pytest-mock~=3.10',
    'coverage~=7.3',
    'pre-commit~=3.5',
-   'black~=23.9',
+   'black~=23.10',
    'sphinx==4.2.0',
    'sphinx-rtd-theme==1.0.0',
    'm2r2==0.3.1',
@@ -90,9 +88,9 @@ select = [
     "PIE",     # Bunch of useful rules
     # "SIM",     # Simplifies your code
     "INT",     # Validates your gettext translation strings
+    "PERF",    # PerfLint
     "PGH",     # No all-purpose "# noqa" and eval validation
-    # "UP",      # PyUpgrade
-    # todo perf & PL
+    "PL",      # PyLint
 ]
 ignore = [
 ]
@@ -115,8 +113,9 @@ fixable = [
     "PIE",     # Bunch of useful rules
     # "SIM",     # Simplifies your code
     "INT",     # Validates your gettext translation strings
+    "PERF",    # PerfLint
     "PGH",     # No all-purpose "# noqa" and eval validation
-    # "UP",      # PyUpgrade
+    "PL",      # PyLint
 ]
 unfixable = []
 
@@ -162,9 +161,9 @@ isolated_build = True
 [testenv]
 # Django deprecation overview: https://www.djangoproject.com/download/
 deps =
-    django32: Django>=3.2,<3.3
-    django41: Django>=4.1,<4.2
-    django42: Django>=4.2,<4.3
+    django41: Django==4.1.*
+    django42: Django==4.2.*
+    django50: Django==5.0.*
 extras = dev,
 commands =
     coverage run -m pytest --ds settings tests
