@@ -15,6 +15,7 @@ classifiers = [
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
@@ -152,24 +153,26 @@ target-version = "py312"
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py{38,39,310,311}-django{32,41,42}
-isolated_build = True
+requires =
+    tox>=4.2
+env_list =
+    py312-django{50, 42}
+    py311-django{50, 42, 41}
+    py310-django{50, 42, 41, 40, 32}
+    py39-django{42, 41, 40, 32}
+    py38-django{42, 41, 40, 32}
 
 [testenv]
-# Django deprecation overview: https://www.djangoproject.com/download/
+package = wheel
 deps =
-    django32: Django>=3.2,<3.3
-    django41: Django>=4.1,<4.2
-    django42: Django>=4.2,<4.3
-extras = dev,
+    -r requirements/{envname}.txt
+set_env =
+    PYTHONDEVMODE = 1
 commands =
-    pytest --ds settings tests
-
-[gh-actions]
-python =
-    3.8: py38
-    3.9: py39
-    3.10: py310
-    3.11: py311
-    3.12: py312
+    python \
+      -W error::ResourceWarning \
+      -W error::DeprecationWarning \
+      -W error::PendingDeprecationWarning \
+      -m coverage run \
+      -m pytest {posargs:tests}
 """
