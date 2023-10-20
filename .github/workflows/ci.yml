@@ -49,6 +49,8 @@ jobs:
         env:
           TOXENV: django${{ matrix.django-version }}
         run: tox
+      - name: ls
+        run: ls -lisa
       - name: Upload coverage data
         uses: actions/upload-artifact@v3
         with:

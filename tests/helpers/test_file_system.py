@@ -47,3 +47,7 @@ class HelperFileSystemTest(TestCase):
     def test_delete_file_dry_run(self, mocked_unlink):
         delete_file(app_label='testapp', filename='my_file.py', dry_run=True)
         mocked_unlink.assert_not_called()
+
+    @mock.patch('django_migration_zero.helpers.file_system.os.unlink', side_effect=OSError)
+    def test_delete_file_os_error(self, *args):
+        self.assertIsNone(delete_file(app_label='testapp', filename='my_file.py', dry_run=False))
