@@ -42,7 +42,7 @@ def has_migration_directory(*, app_label: str) -> bool:
     return True if isdir(possible_migration_dir) else False
 
 
-def get_migration_files(*, app_label: str) -> list[str]:
+def get_migration_files(*, app_label: str, exclude_initials: bool = True) -> list[str]:
     migration_file_list = []
 
     logger.info(f"Getting migration files from app {app_label!r}...")
@@ -50,6 +50,12 @@ def get_migration_files(*, app_label: str) -> list[str]:
     file_pattern = r"^\d{4}_\w+\.py$"
     for filename in os.listdir(migration_dir):
         if re.match(file_pattern, filename):
+            if exclude_initials:
+                initial_pattern = r"^\d{4}_initial.py$"
+                if re.match(initial_pattern, filename):
+                    logger.debug(f"File {filename!r} ignored since it's an initial migration.")
+                    continue
+
             logger.info(f"Migration file {filename!r} detected.")
             migration_file_list.append(filename)
         else:

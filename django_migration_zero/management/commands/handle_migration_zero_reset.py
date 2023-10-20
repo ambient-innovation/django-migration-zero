@@ -18,8 +18,8 @@ class Command(BaseCommand):
         # Fetch configuration singleton from database
         config_singleton = MigrationZeroConfiguration.objects.fetch_singleton()
 
-        # If we are not planning to do a migration reset, we are done here
-        if not config_singleton.is_migration_applicable:
+        # If we encountered a problem or are not planning to do a migration reset, we are done here
+        if not (config_singleton and config_singleton.is_migration_applicable):
             return
 
         # Reset migration history in database for all local apps

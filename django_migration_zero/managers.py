@@ -1,6 +1,7 @@
-from django.db import models
+from django.db import ProgrammingError, models
 
 from django_migration_zero.exceptions import MissingMigrationZeroConfigRecordError
+from django_migration_zero.helpers.logger import get_logger
 
 
 class MigrationZeroConfigurationQuerySet(models.QuerySet):
@@ -9,7 +10,16 @@ class MigrationZeroConfigurationQuerySet(models.QuerySet):
 
 class MigrationZeroConfigurationManager(models.Manager):
     def fetch_singleton(self) -> None:
-        number_records = self.all().count()
+        logger = get_logger()
+        try:
+            number_records = self.all().count()
+        except ProgrammingError:
+            logger.warning(
+                "The migration table is missing. This might be ok for the first installation of "
+                "\"django-migration-zero\" but if you see this warning after that point, something went sideways."
+            )
+            return None
+
         if number_records > 1:
             raise MissingMigrationZeroConfigRecordError(
                 "Too many configuration records detected. There can only be one."
