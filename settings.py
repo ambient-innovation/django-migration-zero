@@ -31,12 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third-party
+    "django_migration_zero",
+    # Local
+    "testapp",
 ]
 
 MIDDLEWARE = [
@@ -76,6 +81,7 @@ DATABASES = {
     }
 }
 
+MIGRATION_ZERO_APPS_DIR = BASE_DIR / 'django-migration-zero'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -107,6 +113,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = [str(BASE_DIR) + '/django_migration_zero/locale']
+
+# Routing
+ROOT_URLCONF = 'testapp.urls'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -117,6 +127,3 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-LOCALE_PATHS = [str(BASE_DIR) + '/django_migration_zero/locale']

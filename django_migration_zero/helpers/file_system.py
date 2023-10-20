@@ -15,7 +15,7 @@ def build_migration_directory_path(*, app_label: str) -> Path:
     """
     Get directory to the migration directory of a given local Django app
     """
-    return MIGRATION_ZERO_APPS_DIR + app_label + "migrations"
+    return MIGRATION_ZERO_APPS_DIR / app_label / "migrations"
 
 
 def get_local_django_apps() -> list[str]:
@@ -25,7 +25,9 @@ def get_local_django_apps() -> list[str]:
     local_apps = []
     logger.info("Getting local Django apps...")
     for app_config in apps.get_app_configs():
-        if str(Path(MIGRATION_ZERO_APPS_DIR)) in str(Path(app_config.path)):
+        local_path = str(Path(MIGRATION_ZERO_APPS_DIR))
+        app_path = str(Path(app_config.path))
+        if local_path in app_path and "site-packages" not in app_path:
             logger.info(f"Local app {app_config.label!r} discovered.")
             local_apps.append(app_config.label)
         else:
@@ -42,7 +44,10 @@ def has_migration_directory(*, app_label: str) -> bool:
     return True if isdir(possible_migration_dir) else False
 
 
-def get_migration_files(*, app_label: str, exclude_initials: bool = True) -> list[str]:
+def get_migration_files(*, app_label: str, exclude_initials: bool = False) -> list[str]:
+    """
+    Returns a list of all migration files detected in the given Django app.
+    """
     migration_file_list = []
 
     logger.info(f"Getting migration files from app {app_label!r}...")
@@ -66,9 +71,9 @@ def get_migration_files(*, app_label: str, exclude_initials: bool = True) -> lis
 
 def delete_file(*, filename: str, app_label: str, dry_run: bool = False) -> None:
     """
-    Physically delete file.
+    Physically delete the given file
     """
-    file_path = build_migration_directory_path(app_label=app_label) + filename
+    file_path = build_migration_directory_path(app_label=app_label) / filename
     if not dry_run:
         try:
             os.unlink(file_path)

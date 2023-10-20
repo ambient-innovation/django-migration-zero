@@ -45,9 +45,6 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 * Recreate initial migration files containing your current model state
 * Fix the migration history on every of your environments
 
-
-
-
 ## Installation
 
 

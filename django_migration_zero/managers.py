@@ -12,7 +12,7 @@ class MigrationZeroConfigurationManager(models.Manager):
     def fetch_singleton(self) -> None:
         logger = get_logger()
         try:
-            number_records = self.all().count()
+            number_records = self.count()
         except ProgrammingError:
             logger.warning(
                 "The migration table is missing. This might be ok for the first installation of "

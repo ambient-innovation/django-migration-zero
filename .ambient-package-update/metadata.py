@@ -55,9 +55,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
         'Django>=3.2',
     ],
     optional_dependencies={
-        'dev': [
-            *DEV_DEPENDENCIES,
-        ],
+        'dev': [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
     },
     ruff_ignore_list=[],
 )
