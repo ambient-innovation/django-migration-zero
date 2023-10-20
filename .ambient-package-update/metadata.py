@@ -52,7 +52,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 * Fix the migration history on every of your environments""",
     ),
     dependencies=[
-        'Django>=3.2',
+        'Django>=4.1',
     ],
     optional_dependencies={
         'dev': [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
