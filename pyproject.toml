@@ -14,7 +14,7 @@ classifiers = [
     "Framework :: Django",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.0a1",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
@@ -47,7 +47,7 @@ dev = [
    'sphinx-rtd-theme==1.0.0',
    'm2r2==0.3.1',
    'mistune<2.0.0',
-   'ambient-package-update~=23.10.1',
+   'ambient-package-update~=23.10.2',
    'unittest-parametrize~=1.3',
 ]
 
@@ -163,7 +163,7 @@ isolated_build = True
 deps =
     django41: Django==4.1.*
     django42: Django==4.2.*
-    django50: Django==5.0.*
+    django50a1: Django==5.0a1.*
 extras = dev,
 commands =
     coverage run -m pytest --ds settings tests

@@ -54,7 +54,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
     dependencies=[
         'Django>=4.1',
     ],
-    supported_django_versions=["4.1", "4.2", "5.0"],
+    supported_django_versions=["4.1", "4.2", "5.0a1"],
     supported_python_versions=SUPPORTED_PYTHON_VERSIONS,
     optional_dependencies={
         'dev': [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
