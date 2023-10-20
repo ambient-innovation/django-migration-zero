@@ -14,7 +14,6 @@ classifiers = [
     "Framework :: Django",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0a1",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
@@ -163,7 +162,6 @@ isolated_build = True
 deps =
     django41: Django==4.1.*
     django42: Django==4.2.*
-    django50a1: Django==5.0a1.*
 extras = dev,
 commands =
     coverage run -m pytest --ds settings tests
