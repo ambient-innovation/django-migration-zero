@@ -42,6 +42,7 @@ dev = [
    'freezegun~=1.2',
    'pytest-django~=4.5',
    'pytest-mock~=3.10',
+   'coverage~=7.3',
    'pre-commit~=3.5',
    'black~=23.9',
    'sphinx==4.2.0',
@@ -166,7 +167,7 @@ deps =
     django42: Django>=4.2,<4.3
 extras = dev,
 commands =
-    pytest --ds settings tests
+    python coverage run pytest --ds settings tests
 
 [gh-actions]
 python =
