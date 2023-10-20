@@ -1,5 +1,8 @@
 # Changelog
 
+* *0.1.4** (2023-10-20)
+  * Unit-tests
+
 * *0.1.3** (2023-10-20)
   * Improved clean-up command
 

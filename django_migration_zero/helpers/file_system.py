@@ -2,6 +2,7 @@ import os
 import re
 from os.path import isdir
 from pathlib import Path
+from typing import List
 
 from django.apps import apps
 
@@ -18,7 +19,7 @@ def build_migration_directory_path(*, app_label: str) -> Path:
     return MIGRATION_ZERO_APPS_DIR / app_label / "migrations"
 
 
-def get_local_django_apps() -> list[str]:
+def get_local_django_apps() -> List[str]:
     """
     Iterate all installed Django apps and detect local ones.
     """
@@ -44,7 +45,7 @@ def has_migration_directory(*, app_label: str) -> bool:
     return True if isdir(possible_migration_dir) else False
 
 
-def get_migration_files(*, app_label: str, exclude_initials: bool = False) -> list[str]:
+def get_migration_files(*, app_label: str, exclude_initials: bool = False) -> List[str]:
     """
     Returns a list of all migration files detected in the given Django app.
     """
