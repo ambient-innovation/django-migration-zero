@@ -12,6 +12,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",
     "Framework :: Django",
+    # todo das muss dynamisch werden
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
@@ -90,6 +91,7 @@ select = [
     "INT",     # Validates your gettext translation strings
     "PGH",     # No all-purpose "# noqa" and eval validation
     # "UP",      # PyUpgrade
+    # todo perf & PL
 ]
 ignore = [
 ]
@@ -153,26 +155,24 @@ target-version = "py312"
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-requires =
-    tox>=4.2
-env_list =
-    py312-django{50, 42}
-    py311-django{50, 42, 41}
-    py310-django{50, 42, 41, 40, 32}
-    py39-django{42, 41, 40, 32}
-    py38-django{42, 41, 40, 32}
+envlist = py{38,39,310,311}-django{32,41,42}
+isolated_build = True
 
 [testenv]
-package = wheel
+# Django deprecation overview: https://www.djangoproject.com/download/
 deps =
-    -r requirements/{envname}.txt
-set_env =
-    PYTHONDEVMODE = 1
+    django32: Django>=3.2,<3.3
+    django41: Django>=4.1,<4.2
+    django42: Django>=4.2,<4.3
+extras = dev,
 commands =
-    python \
-      -W error::ResourceWarning \
-      -W error::DeprecationWarning \
-      -W error::PendingDeprecationWarning \
-      -m coverage run \
-      -m pytest {posargs:tests}
+    pytest --ds settings tests
+
+[gh-actions]
+python =
+    3.8: py38
+    3.9: py39
+    3.10: py310
+    3.11: py311
+    3.12: py312
 """
