@@ -1,7 +1,7 @@
 from pathlib import Path
 from unittest import mock
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from django_migration_zero.helpers.file_system import (
     build_migration_directory_path,
@@ -13,11 +13,7 @@ from django_migration_zero.helpers.file_system import (
 
 
 class HelperFileSystemTest(TestCase):
-    # Overriding settings doesn't work for some reason...
-    @mock.patch(
-        'django_migration_zero.helpers.file_system.MIGRATION_ZERO_APPS_DIR',
-        new=Path("/user/workspace/migration_zero/"),
-    )
+    @override_settings(MIGRATION_ZERO_APPS_DIR=Path("/user/workspace/migration_zero/"))
     def test_build_migration_directory_path_regular(self, *args):
         self.assertEqual(
             build_migration_directory_path(app_label='ilyta'), Path('/user/workspace/migration_zero/ilyta/migrations')

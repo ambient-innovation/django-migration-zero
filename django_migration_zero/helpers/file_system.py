@@ -7,7 +7,7 @@ from typing import List
 from django.apps import apps
 
 from django_migration_zero.helpers.logger import get_logger
-from django_migration_zero.settings import MIGRATION_ZERO_APPS_DIR
+from django_migration_zero.settings import get_migration_zero_apps_dir
 
 logger = get_logger()
 
@@ -16,7 +16,7 @@ def build_migration_directory_path(*, app_label: str) -> Path:
     """
     Get directory to the migration directory of a given local Django app
     """
-    return MIGRATION_ZERO_APPS_DIR / app_label / "migrations"
+    return get_migration_zero_apps_dir() / app_label / "migrations"
 
 
 def get_local_django_apps() -> List[str]:
@@ -26,7 +26,7 @@ def get_local_django_apps() -> List[str]:
     local_apps = []
     logger.info("Getting local Django apps...")
     for app_config in apps.get_app_configs():
-        local_path = str(Path(MIGRATION_ZERO_APPS_DIR))
+        local_path = str(get_migration_zero_apps_dir())
         app_path = str(Path(app_config.path))
         if local_path in app_path and "site-packages" not in app_path:
             logger.info(f"Local app {app_config.label!r} discovered.")

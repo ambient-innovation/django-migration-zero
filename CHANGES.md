@@ -1,13 +1,19 @@
 # Changelog
 
-* *0.1.6** (2023-10-20)
+* *0.1.8* (2023-10-23)
+  * Small improvements
+
+* *0.1.7* (2023-10-23)
+  * Migration dir settings improved
+
+* *0.1.6* (2023-10-20)
   * Fixes and adjustments
-*
-* *0.1.5** (2023-10-20)
+
+* *0.1.5* (2023-10-20)
   * Coverage
   * Dependency updates
 
-* *0.1.4** (2023-10-20)
+* *0.1.4* (2023-10-20)
   * Unit-tests
 
 * *0.1.3** (2023-10-20)

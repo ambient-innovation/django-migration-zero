@@ -4,3 +4,7 @@ class MissingMigrationZeroConfigRecordError(RuntimeError):
 
 class InvalidMigrationTreeError(RuntimeError):
     pass
+
+
+class InvalidMigrationAppsDirPathError(ValueError):
+    pass
