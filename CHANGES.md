@@ -1,5 +1,8 @@
 # Changelog
 
+* *0.1.9* (2023-10-24)
+  * Reimplemented migration history pruning
+
 * *0.1.8* (2023-10-23)
   * Small improvements
 

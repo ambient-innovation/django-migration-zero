@@ -1,6 +1,7 @@
 from logging import Logger
 
 from django.core.management import call_command
+from django.db import connections
 
 from django_migration_zero.exceptions import InvalidMigrationTreeError
 from django_migration_zero.helpers.file_system import get_local_django_apps, has_migration_directory
@@ -41,8 +42,10 @@ class DatabasePreparationService:
                 self.logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
                 continue
 
-            self.logger.info(f"Pruning migration history for app {app_label!r}...")
-            call_command("migrate", app_label=app_label, prune=True)
+            self.logger.info(f"Cleaning migration history for app {app_label!r}...")
+
+            with connections["default"].cursor() as cursor:
+                cursor.execute(f"DELETE FROM `django_migrations` WHERE `app`='{app_label}'")
 
         # Apply migrations via fake because the database is already up-to-date
         self.logger.info("Populating migration history.")
