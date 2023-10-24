@@ -99,13 +99,10 @@ class DatabasePreparationServiceTest(TestCase):
         # Assertions
         calls = mocked_call_command.call_args_list
 
-        self.assertEqual(mocked_call_command.call_count, 3)
+        self.assertEqual(mocked_call_command.call_count, 2)
 
         self.assertEqual(calls[0].args, ("migrate",))
-        self.assertEqual(calls[0].kwargs, {'app_label': 'django_migration_zero', 'prune': True})
+        self.assertEqual(calls[0].kwargs, {'fake': True})
 
         self.assertEqual(calls[1].args, ("migrate",))
-        self.assertEqual(calls[1].kwargs, {'fake': True})
-
-        self.assertEqual(calls[2].args, ("migrate",))
-        self.assertEqual(calls[2].kwargs, {'check': True})
+        self.assertEqual(calls[1].kwargs, {'check': True})
