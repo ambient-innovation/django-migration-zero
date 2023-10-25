@@ -7,10 +7,12 @@ django-migration-zero
    :maxdepth: 1
    :caption: Contents:
 
-   features/introduction.md
-   features/configuration.md
-   features/usage.md
-   features/changelog.rst
+   features/01_introduction.md
+   features/02_configuration.md
+   features/03_workflow.md
+   features/04_architecture.md
+   features/05_management_commands.md
+   features/06_changelog.rst
 
 Indices and tables
 ==================

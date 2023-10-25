@@ -1,5 +1,9 @@
 # Changelog
 
+* *1.0.0* (2023-10-25)
+  * Added comprehensive documentation
+  * Improved logger warning message
+
 * *0.1.9* (2023-10-24)
   * Reimplemented migration history pruning
 

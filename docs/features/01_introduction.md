@@ -6,8 +6,8 @@ Migrations will pile up in your application over the course of time. Squashing t
 dependencies within your models and in the end, you do work for something that you don't need. All migrations have been
 applied, so the structural and data changes are not relevant for you anymore.
 
-The "migration zero" approach will help you get rid of those migration files. But most solutions ore packages (todo add
-package reference) will only help you do a local clean-up while the tricky part is to update your migration history on
+The "migration zero" approach will help you get rid of those migration files. But most solutions or packages
+will only help you do a local clean-up while the tricky part is to update your migration history on
 your deployed systems.
 
 Surely, you can log into your production system and run a series of commands manually but this is always a high-stress
@@ -27,6 +27,9 @@ happen on your databases, no matter where they live and how you can access them.
 * You have dedicated branches for every environment you deploy to
     * e.g. `master` deploys to your production system, `develop` deploys to your test system
 * All migrations in every deployment branch have been applied to their database
-* Having access to the Django admin of every environment you want to reset the migartions on
+* Having access to the Django admin of every environment you want to reset the migrations on
 
-##
+## Literature
+
+* [“Migrations zero” or how to handle migrations on a large Django project, X. Dubuc, 2018](https://medium.com/@xavier.dubuc/migrations-zero-or-how-to-handle-migrations-on-a-large-django-project-643627938449)
+* [How to Reset Migrations, V. Freitas, 2016](https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html)

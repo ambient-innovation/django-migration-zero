@@ -36,7 +36,7 @@ drawback here is, that you have to take care of circular dependencies between mo
 size, this can take a fair amount of time.
 
 The main benefit of squashing migrations is, that the history stays intact, therefore it can be used for example in
-package which can be installed by anybody and you don't have control over their database.
+package which can be installed by anybody, and you don't have control over their database.
 
 If you are working on a "regular" application, you have full control over your data(bases) and once everything has
 been applied on the "last" system, typically production, the migrations are obsolete. To avoid spending much time on
