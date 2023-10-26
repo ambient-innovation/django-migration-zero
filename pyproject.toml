@@ -12,6 +12,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",
     "Framework :: Django",
+    "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
     "Intended Audience :: Developers",
@@ -160,6 +161,7 @@ isolated_build = True
 [testenv]
 # Django deprecation overview: https://www.djangoproject.com/download/
 deps =
+    django32: Django==3.2.*
     django41: Django==4.1.*
     django42: Django==4.2.*
 extras = dev,

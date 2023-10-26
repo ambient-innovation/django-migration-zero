@@ -1,5 +1,6 @@
 from ambient_package_update.metadata.author import PackageAuthor
-from ambient_package_update.metadata.constants import DEV_DEPENDENCIES, LICENSE_MIT, SUPPORTED_PYTHON_VERSIONS
+from ambient_package_update.metadata.constants import DEV_DEPENDENCIES, LICENSE_MIT, SUPPORTED_PYTHON_VERSIONS, \
+    SUPPORTED_DJANGO_VERSIONS
 from ambient_package_update.metadata.package import PackageMetadata
 from ambient_package_update.metadata.readme import ReadmeContent
 
@@ -65,7 +66,7 @@ logs in your console.
     dependencies=[
         'Django>=4.1',
     ],
-    supported_django_versions=["4.1", "4.2"],
+    supported_django_versions=SUPPORTED_DJANGO_VERSIONS,
     supported_python_versions=SUPPORTED_PYTHON_VERSIONS,
     optional_dependencies={
         'dev': [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
