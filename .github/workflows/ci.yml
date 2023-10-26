@@ -21,6 +21,7 @@ jobs:
       - name: Run pre-commit hooks
         run: pre-commit run --all-files --hook-stage push
 
+  
   validate_migrations:
     name: Validate migrations
     runs-on: ubuntu-22.04
@@ -36,6 +37,7 @@ jobs:
 
       - name: Validate migration integrity
         run: python manage.py makemigrations --check --dry-run
+  
 
   tests:
     name: Python ${{ matrix.python-version }}, django ${{ matrix.django-version }}
@@ -65,7 +67,6 @@ jobs:
         env:
           TOXENV: django${{ matrix.django-version }}
         run: tox
-
       - name: Upload coverage data
         uses: actions/upload-artifact@v3
         with:

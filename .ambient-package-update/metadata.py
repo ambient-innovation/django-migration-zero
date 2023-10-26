@@ -60,7 +60,7 @@ logs in your console.
     "level": "INFO",
     "propagate": True,
 },
-```"""
+```""",
     ),
     dependencies=[
         'Django>=4.1',
