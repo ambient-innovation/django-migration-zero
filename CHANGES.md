@@ -1,5 +1,8 @@
 # Changelog
 
+* *1.0.0* (2023-10-26)
+  * Official stable release
+
 * *0.1.10* (2023-10-26)
   * Added comprehensive documentation
   * Improved logger warning message
