@@ -1,5 +1,8 @@
 # Changelog
 
+* *1.0.1* (2023-10-26)
+  * Fixed RTD build
+
 * *1.0.0* (2023-10-26)
   * Official stable release
 
