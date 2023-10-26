@@ -6,7 +6,7 @@
 [![Documentation Status](https://readthedocs.org/projects/django-migration-zero/badge/?version=latest)](https://django-migration-zero.readthedocs.io/en/latest/?badge=latest)
 
 Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
-        Django covering local changes and CI/CD pipeline adjustments.
+Django covering local changes and CI/CD pipeline adjustments.
 
 This package implements the "migration zero" pattern to clean up your local migrations and provides convenient
 management commands to recreate your migration files and updating your migration history on your environments
@@ -31,12 +31,12 @@ most popular deployment approaches, they won't be needed when they are deployed 
 your repo, might lead to merge conflicts in the future and will slow down your test setup.
 
 Django's default way of handling this is called "squashing". This approach is covered broadly in the
-(official documentation)[https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing. The main
+[official documentation](https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing). The main
 drawback here is, that you have to take care of circular dependencies between models. Depending on your project's
 size, this can take a fair amount of time.
 
 The main benefit of squashing migrations is, that the history stays intact, therefore it can be used for example in
-package which can be installed by anybody, and you don't have control over their database.
+package which can be installed by anybody and you don't have control over their database.
 
 If you are working on a "regular" application, you have full control over your data(bases) and once everything has
 been applied on the "last" system, typically production, the migrations are obsolete. To avoid spending much time on
@@ -65,6 +65,23 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
         'django_migration_zero',
     )
      ````
+
+
+- Apply migrations by running
+
+  `python ./manage.py migrate`
+
+
+* Add this block to your logging handlers in your main Django `settings.py` to show
+logs in your console.
+
+```python
+"django_migration_zero": {
+    "handlers": ["console"],
+    "level": "INFO",
+    "propagate": True,
+},
+```
 
 
 ## Contribute

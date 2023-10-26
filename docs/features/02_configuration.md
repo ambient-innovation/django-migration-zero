@@ -5,6 +5,8 @@ main django settings.
 
 Usually, you can use the `BASE_DIR` variable from Django's default setup and add a path.
 
+Note that this variable has to be of type `pathlib.Path`.
+
 ```python
 MIGRATION_ZERO_APPS_DIR = BASE_DIR / "apps"
-````
+```

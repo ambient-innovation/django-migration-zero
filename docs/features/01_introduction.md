@@ -2,9 +2,10 @@
 
 ## Why do I need this package?
 
-Migrations will pile up in your application over the course of time. Squashing takes time to resolve all those circular
-dependencies within your models and in the end, you do work for something that you don't need. All migrations have been
-applied, so the structural and data changes are not relevant for you anymore.
+Migrations will pile up in your application over the course of
+time. [Squashing](https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing) takes time to resolve
+all those circular dependencies within your models and in the end, you do work for something that you don't need. All
+migrations have been applied, so the structural and data changes are not relevant for you anymore.
 
 The "migration zero" approach will help you get rid of those migration files. But most solutions or packages
 will only help you do a local clean-up while the tricky part is to update your migration history on
@@ -22,7 +23,8 @@ happen on your databases, no matter where they live and how you can access them.
 
 * All local Django apps are inside one directory
 * You are in full control of every database your application runs on
-    * This wouldn't be the case if you are creating a python package
+    * This wouldn't be the case if you are creating a python package.
+      Use [squashing](https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing) in that case.
 * You're using some kind of CI/CD pipeline for an automated deployment
 * You have dedicated branches for every environment you deploy to
     * e.g. `master` deploys to your production system, `develop` deploys to your test system

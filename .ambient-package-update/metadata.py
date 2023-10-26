@@ -17,7 +17,7 @@ METADATA = PackageMetadata(
     development_status='4 - Beta',
     readme_content=ReadmeContent(
         tagline="""Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
-        Django covering local changes and CI/CD pipeline adjustments.
+Django covering local changes and CI/CD pipeline adjustments.
 
 This package implements the "migration zero" pattern to clean up your local migrations and provides convenient
 management commands to recreate your migration files and updating your migration history on your environments
@@ -36,7 +36,7 @@ most popular deployment approaches, they won't be needed when they are deployed 
 your repo, might lead to merge conflicts in the future and will slow down your test setup.
 
 Django's default way of handling this is called "squashing". This approach is covered broadly in the
-(official documentation)[https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing. The main
+[official documentation](https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing). The main
 drawback here is, that you have to take care of circular dependencies between models. Depending on your project's
 size, this can take a fair amount of time.
 
@@ -50,6 +50,16 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 * Delete all your local migration files
 * Recreate initial migration files containing your current model state
 * Fix the migration history on every of your environments""",
+        additional_installation="""* Add this block to your logging handlers in your main Django `settings.py` to show
+logs in your console.
+
+```python
+"django_migration_zero": {
+    "handlers": ["console"],
+    "level": "INFO",
+    "propagate": True,
+},
+```"""
     ),
     dependencies=[
         'Django>=4.1',
