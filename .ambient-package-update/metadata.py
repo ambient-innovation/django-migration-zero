@@ -15,6 +15,7 @@ METADATA = PackageMetadata(
     license=LICENSE_MIT,
     license_year=2023,
     development_status='4 - Beta',
+    has_migrations=True,
     readme_content=ReadmeContent(
         tagline="""Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
 Django covering local changes and CI/CD pipeline adjustments.

@@ -67,7 +67,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
      ````
 
 
-- Apply migrations by running
+- Apply migrations by running:
 
   `python ./manage.py migrate`
 
