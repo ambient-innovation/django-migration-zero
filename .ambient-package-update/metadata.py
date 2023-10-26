@@ -2,8 +2,8 @@ from ambient_package_update.metadata.author import PackageAuthor
 from ambient_package_update.metadata.constants import (
     DEV_DEPENDENCIES,
     LICENSE_MIT,
-    SUPPORTED_PYTHON_VERSIONS,
     SUPPORTED_DJANGO_VERSIONS,
+    SUPPORTED_PYTHON_VERSIONS,
 )
 from ambient_package_update.metadata.package import PackageMetadata
 from ambient_package_update.metadata.readme import ReadmeContent
