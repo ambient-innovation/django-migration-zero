@@ -68,7 +68,7 @@ logs in your console.
 ```""",
     ),
     dependencies=[
-        'Django>=4.1',
+        'Django>=3.2',
     ],
     supported_django_versions=SUPPORTED_DJANGO_VERSIONS,
     supported_python_versions=SUPPORTED_PYTHON_VERSIONS,

@@ -1,5 +1,9 @@
 # Changelog
 
+* *1.0.2* (2023-10-27)
+  * Set correct min. Django version in requirements
+  * Fixed typo in Changelog
+
 * *1.0.1* (2023-10-26)
   * Fixed RTD build
 
@@ -29,14 +33,14 @@
 * *0.1.4* (2023-10-20)
   * Unit-tests
 
-* *0.1.3** (2023-10-20)
+* *0.1.3* (2023-10-20)
   * Improved clean-up command
 
-* *0.1.2** (2023-10-19)
+* *0.1.2* (2023-10-19)
   * Translations, bugfixes and improvements
 
-* *0.1.1** (2023-10-19)
+* *0.1.1* (2023-10-19)
   * Bugfixes and improved logging
 
-* *0.1.0** (2023-10-19)
+* *0.1.0* (2023-10-19)
   * Initial release

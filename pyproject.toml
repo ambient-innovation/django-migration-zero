@@ -31,7 +31,7 @@ classifiers = [
 dynamic = ["version", "description"]
 license = {"file" = "LICENSE.md"}
 dependencies = [
-    'Django>=4.1',
+    'Django>=3.2',
 ]
 
 
@@ -47,7 +47,7 @@ dev = [
    'sphinx-rtd-theme==1.0.0',
    'm2r2==0.3.1',
    'mistune<2.0.0',
-   'ambient-package-update~=23.10.4',
+   'ambient-package-update~=23.10.5',
    'unittest-parametrize~=1.3',
 ]
 
