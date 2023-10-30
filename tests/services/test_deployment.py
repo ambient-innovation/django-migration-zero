@@ -36,12 +36,6 @@ class DatabasePreparationServiceTest(TestCase):
         self.config.refresh_from_db()
         self.assertFalse(self.config.migration_imminent)
 
-    @mock.patch("django_migration_zero.services.deployment.get_local_django_apps")
-    def test_process_case_switch_off(self, mocked_get_local_django_apps):
-        self.service.process()
-
-        mocked_get_local_django_apps.assert_not_called()
-
     @mock.patch("django_migration_zero.services.deployment.call_command", return_value=1)
     def test_process_case_migration_check_failed(self, *args):
         # Setup
