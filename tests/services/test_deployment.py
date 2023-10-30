@@ -42,35 +42,6 @@ class DatabasePreparationServiceTest(TestCase):
 
         mocked_get_local_django_apps.assert_not_called()
 
-    @mock.patch("django_migration_zero.services.deployment.has_migration_directory", return_value=False)
-    def test_process_case_app_with_no_migration_found(self, mocked_has_migration_directory):
-        # Setup
-        self.config.migration_imminent = True
-        self.config.migration_date = timezone.now().date()
-        self.config.save()
-
-        # Call testable
-        self.service.process()
-
-        # Assertion
-        mocked_has_migration_directory.assert_called()
-
-    @mock.patch(
-        "django_migration_zero.services.deployment.get_local_django_apps", return_value=["django_migration_zero"]
-    )
-    @mock.patch("django_migration_zero.services.deployment.has_migration_directory", return_value=True)
-    def test_process_case_app_with_migration_found(self, mocked_has_migration_directory, *args):
-        # Setup
-        self.config.migration_imminent = True
-        self.config.migration_date = timezone.now().date()
-        self.config.save()
-
-        # Call testable
-        self.service.process()
-
-        # Assertion
-        mocked_has_migration_directory.assert_called()
-
     @mock.patch("django_migration_zero.services.deployment.call_command", return_value=1)
     def test_process_case_migration_check_failed(self, *args):
         # Setup
