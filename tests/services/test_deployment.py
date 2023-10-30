@@ -6,6 +6,7 @@ from django.utils import timezone
 from freezegun import freeze_time
 
 from django_migration_zero.exceptions import InvalidMigrationTreeError
+from django_migration_zero.managers import MigrationZeroConfigurationManager
 from django_migration_zero.models import MigrationZeroConfiguration
 from django_migration_zero.services.deployment import DatabasePreparationService
 
@@ -35,6 +36,15 @@ class DatabasePreparationServiceTest(TestCase):
 
         self.config.refresh_from_db()
         self.assertFalse(self.config.migration_imminent)
+
+    @mock.patch.object(MigrationZeroConfiguration, "is_migration_applicable", return_value=False)
+    @mock.patch.object(MigrationZeroConfigurationManager, "fetch_singleton", return_value=None)
+    def test_process_case_is_migration_applicable_false(self, *args):
+        # Setup
+        self.config.delete()
+
+        # Assertion
+        self.assertIsNone(self.service.process())
 
     @mock.patch("django_migration_zero.services.deployment.call_command", return_value=1)
     def test_process_case_migration_check_failed(self, *args):
