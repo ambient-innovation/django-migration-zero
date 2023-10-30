@@ -31,21 +31,12 @@ class DatabasePreparationService:
         if not (config_singleton and config_singleton.is_migration_applicable):
             return
 
-        # Reset migration history in database for all local apps
-        self.logger.info("Resetting migration history for local apps...")
+        # Reset migration history in database for all apps because there might be dependency issues if we keep the
+        # records of the other ones
+        self.logger.info("Resetting migration history for all apps...")
 
-        local_app_list = get_local_django_apps()
-
-        for app_label in local_app_list:
-            # Local apps have a path which contains the path of the Django app directory
-            if not has_migration_directory(app_label=app_label):
-                self.logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
-                continue
-
-            self.logger.info(f"Cleaning migration history for app {app_label!r}...")
-
-            with connections["default"].cursor() as cursor:
-                cursor.execute(f"DELETE FROM `django_migrations` WHERE `app`='{app_label}'")
+        with connections["default"].cursor() as cursor:
+            cursor.execute(f"DELETE FROM `django_migrations`")
 
         # Apply migrations via fake because the database is already up-to-date
         self.logger.info("Populating migration history.")

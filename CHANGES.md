@@ -1,5 +1,8 @@
 # Changelog
 
+* *1.0.3* (2023-10-30)
+  * Changed django migration table clean-up to delete everything to avoid issue with dependencies
+
 * *1.0.2* (2023-10-27)
   * Set correct min. Django version in requirements
   * Fixed typo in Changelog

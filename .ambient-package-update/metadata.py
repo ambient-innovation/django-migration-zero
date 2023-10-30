@@ -56,7 +56,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 * Delete all your local migration files
 * Recreate initial migration files containing your current model state
 * Fix the migration history on every of your environments""",
-        additional_installation="""* Add this block to your logging handlers in your main Django `settings.py` to show
+        additional_installation="""* Add this block to your loggers in your main Django `settings.py` to show
 logs in your console.
 
 ```python
