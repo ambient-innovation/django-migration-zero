@@ -4,7 +4,6 @@ from django.core.management import call_command
 from django.db import connections
 
 from django_migration_zero.exceptions import InvalidMigrationTreeError
-from django_migration_zero.helpers.file_system import get_local_django_apps, has_migration_directory
 from django_migration_zero.helpers.logger import get_logger
 from django_migration_zero.models import MigrationZeroConfiguration
 
@@ -36,7 +35,7 @@ class DatabasePreparationService:
         self.logger.info("Resetting migration history for all apps...")
 
         with connections["default"].cursor() as cursor:
-            cursor.execute(f"DELETE FROM `django_migrations`")
+            cursor.execute("DELETE FROM `django_migrations`")
 
         # Apply migrations via fake because the database is already up-to-date
         self.logger.info("Populating migration history.")
