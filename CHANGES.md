@@ -1,5 +1,9 @@
 # Changelog
 
+* *1.0.4* (2023-10-31)
+  * Added `default_auto_field` to app config
+  * Linting and test fixes
+
 * *1.0.3* (2023-10-30)
   * Changed django migration table clean-up to delete everything to avoid issue with dependencies
 
