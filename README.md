@@ -2,7 +2,7 @@
 [![Downloads](https://static.pepy.tech/badge/django-migration-zero)](https://pepy.tech/project/django-migration-zero)
 [![Coverage](https://img.shields.io/badge/Coverage-100%25-success)](https://github.com/ambient-innovation/django-migration-zero/actions?workflow=CI)
 [![Linting](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Coding Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
+[![Coding Style](https://img.shields.io/badge/code%20style-Ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Documentation Status](https://readthedocs.org/projects/django-migration-zero/badge/?version=latest)](https://django-migration-zero.readthedocs.io/en/latest/?badge=latest)
 
 Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
@@ -72,7 +72,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
   `python ./manage.py migrate`
 
 
-* Add this block to your logging handlers in your main Django `settings.py` to show
+* Add this block to your loggers in your main Django `settings.py` to show
 logs in your console.
 
 ```python

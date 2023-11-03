@@ -2,18 +2,14 @@
 # https://pre-commit.com/
 
 repos:
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 23.10.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.3
     hooks:
-      - id: black
-        args: [ --check, --diff, --config, ./pyproject.toml ]
-        stages: [ push ]
-
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.1.1'
-    hooks:
+      # Run the Ruff linter.
       - id: ruff
-        args: [ --fix, --unsafe-fixes, --exit-non-zero-on-fix ]
+        args: [--fix, --exit-non-zero-on-fix]
+      # Run the Ruff formatter.
+      - id: ruff-format
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.15.0

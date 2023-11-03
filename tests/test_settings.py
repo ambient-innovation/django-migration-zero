@@ -13,6 +13,6 @@ class SettingsTest(TestCase):
     def test_get_migration_zero_apps_dir_wrong_type(self):
         with self.assertRaisesMessage(
             InvalidMigrationAppsDirPathError,
-            "Settings variable \"MIGRATION_ZERO_APPS_DIR\" has to be of type pathlib.Path.",
+            'Settings variable "MIGRATION_ZERO_APPS_DIR" has to be of type pathlib.Path.',
         ):
             get_migration_zero_apps_dir()

@@ -16,7 +16,7 @@ class MigrationZeroConfigurationManager(models.Manager):
         except ProgrammingError:
             logger.warning(
                 "The migration zero table is missing. This might be ok for the first installation of "
-                "\"django-migration-zero\" but if you see this warning after that point, something went sideways."
+                '"django-migration-zero" but if you see this warning after that point, something went sideways.'
             )
             return None
 

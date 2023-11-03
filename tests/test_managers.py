@@ -18,7 +18,7 @@ class MigrationZeroConfigurationManagerTest(TestCase):
     def test_fetch_singleton_singleton_exists_via_migration(self):
         self.assertEqual(MigrationZeroConfiguration.objects.all().count(), 1)
 
-    @mock.patch.object(MigrationZeroConfiguration.objects, 'count', side_effect=ProgrammingError)
+    @mock.patch.object(MigrationZeroConfiguration.objects, "count", side_effect=ProgrammingError)
     def test_fetch_singleton_database_error(self, *args):
         self.assertIsNone(MigrationZeroConfiguration.objects.fetch_singleton())
 

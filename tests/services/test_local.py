@@ -37,7 +37,7 @@ class ResetMigrationFilesTest(TestCase):
 
         # Assertion
         mocked_delete_file.assert_called_with(
-            filename='0001_initial.py', app_label='django_migration_zero', dry_run=False
+            filename="0001_initial.py", app_label="django_migration_zero", dry_run=False
         )
 
     def test_process_delete_file_case_dry_run(self, mocked_delete_file):
@@ -46,7 +46,7 @@ class ResetMigrationFilesTest(TestCase):
 
         # Assertion
         mocked_delete_file.assert_called_with(
-            filename='0001_initial.py', app_label='django_migration_zero', dry_run=True
+            filename="0001_initial.py", app_label="django_migration_zero", dry_run=True
         )
 
     def test_process_delete_file_case_exclude_initials(self, mocked_delete_file):

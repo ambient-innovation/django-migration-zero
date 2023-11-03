@@ -9,17 +9,17 @@ from ambient_package_update.metadata.package import PackageMetadata
 from ambient_package_update.metadata.readme import ReadmeContent
 
 METADATA = PackageMetadata(
-    package_name='django_migration_zero',
+    package_name="django_migration_zero",
     authors=[
         PackageAuthor(
-            name='Ambient Digital',
-            email='hello@ambient.digital',
+            name="Ambient Digital",
+            email="hello@ambient.digital",
         ),
     ],
-    company='Ambient Innovation: GmbH',
+    company="Ambient Innovation: GmbH",
     license=LICENSE_MIT,
     license_year=2023,
-    development_status='5 - Production/Stable',
+    development_status="5 - Production/Stable",
     has_migrations=True,
     readme_content=ReadmeContent(
         tagline="""Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
@@ -68,12 +68,12 @@ logs in your console.
 ```""",
     ),
     dependencies=[
-        'Django>=3.2',
+        "Django>=3.2",
     ],
     supported_django_versions=SUPPORTED_DJANGO_VERSIONS,
     supported_python_versions=SUPPORTED_PYTHON_VERSIONS,
     optional_dependencies={
-        'dev': [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
+        "dev": [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
     },
     ruff_ignore_list=[],
 )

@@ -57,7 +57,7 @@ class DatabasePreparationServiceTest(TestCase):
         with self.assertRaisesMessage(
             InvalidMigrationTreeError,
             'The command "migrate --check" returned a non-zero error code. '
-            'Your migration structure seems to be invalid',
+            "Your migration structure seems to be invalid",
         ):
             self.service.process()
 
@@ -77,7 +77,7 @@ class DatabasePreparationServiceTest(TestCase):
         self.assertEqual(mocked_call_command.call_count, 2)
 
         self.assertEqual(calls[0].args, ("migrate",))
-        self.assertEqual(calls[0].kwargs, {'fake': True})
+        self.assertEqual(calls[0].kwargs, {"fake": True})
 
         self.assertEqual(calls[1].args, ("migrate",))
-        self.assertEqual(calls[1].kwargs, {'check': True})
+        self.assertEqual(calls[1].kwargs, {"check": True})
