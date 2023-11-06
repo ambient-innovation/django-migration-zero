@@ -35,3 +35,9 @@ happen on your databases, no matter where they live and how you can access them.
 
 * [“Migrations zero” or how to handle migrations on a large Django project, X. Dubuc, 2018](https://medium.com/@xavier.dubuc/migrations-zero-or-how-to-handle-migrations-on-a-large-django-project-643627938449)
 * [How to Reset Migrations, V. Freitas, 2016](https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html)
+
+## Alternatives
+
+### [django-zeromigrations](https://pypi.org/project/django-zeromigrations/)
+
+Implements the local cleanup quite verbosely, including a backup functionality. Lacks the CI/CD part, though.

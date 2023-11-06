@@ -1,5 +1,8 @@
 # Changelog
 
+* *1.0.6* (2023-11-06)
+  * Added "Alternatives" section to docs
+
 * *1.0.5* (2023-11-03)
   * Switched formatter from `black` to `ruff`
 
