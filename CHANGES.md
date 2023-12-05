@@ -1,5 +1,8 @@
 # Changelog
 
+* *1.1.0* (2023-12-05)
+  * Added Django 5.0 support
+
 * *1.0.6* (2023-11-06)
   * Added "Alternatives" section to docs
 
