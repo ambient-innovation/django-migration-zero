@@ -3,4 +3,4 @@
 Holistic implementation of "migration zero" pattern for Django covering local changes and in-production database adjustments.
 """
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"

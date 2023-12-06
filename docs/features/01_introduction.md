@@ -2,8 +2,10 @@
 
 ## Why do I need this package?
 
-Migrations will pile up in your application over the course of
-time. [Squashing](https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing) takes time to resolve
+Migrations will pile up in your application over the course of time. They will clutter your repo, slow down your tests
+(time is after all money), and can lead to some nasty problems when you merge branches.
+
+[Squashing](https://docs.djangoproject.com/en/dev/topics/migrations/#migration-squashing) takes time to resolve
 all those circular dependencies within your models and in the end, you do work for something that you don't need. All
 migrations have been applied, so the structural and data changes are not relevant for you anymore.
 

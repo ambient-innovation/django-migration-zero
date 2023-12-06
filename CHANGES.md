@@ -1,5 +1,8 @@
 # Changelog
 
+* *1.1.1* (2023-12-06)
+  * Improved documentations
+
 * *1.1.0* (2023-12-05)
   * Added Django 5.0 support
 

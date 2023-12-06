@@ -66,7 +66,8 @@ python ./manage.py reset_local_migration_files
 ## 4. Preparing the target system
 
 Log into the Django admin, look for the "Migration Zero Configuration" and enable the switch and change the date to
-the date of the deployment (probably "today"). **This step is crucial! Don't forget it!**
+the date of the deployment (probably "today"). **This step is crucial! Don't forget it!** If you don't do this, your
+migration reset deployment won't do any database clean-up and your next migration run will fail.
 
 ## 5. Deployment
 
@@ -91,7 +92,8 @@ merge `develop` into `stage` locally and create a merge/pull request. **DO NOT m
 ### 2. Preparing the target system
 
 Log into the Django admin, look for the "Migration Zero Configuration" and enable the switch and change the date to
-the date of the deployment (probably "today"). **This step is crucial! Don't forget it!**
+the date of the deployment (probably "today"). **This step is crucial! Don't forget it!** Otherwise, you can't "prepare"
+the migration reset release in the Django admin and your next migration run will crash.
 
 ### 3. Deployment
 
