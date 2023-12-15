@@ -23,3 +23,9 @@ If you pushed your migration zero commit with all those removed and changed migr
 active, you'll encounter a crash when running `manage.py migrate`. Since the migration history is out-of-sync with the
 files you just deployed, the migration shouldn't do anything except failing, and you should be OK in 95% of all cases.
 Just activate the flag and redeploy.
+
+## What happens to data migrations (RunPython)? They won't be recreated by Django!
+
+To start with this process, you must make sure that all migrations have been applied to every environment. This means
+that all custom-built data migration you might have, are obsolete by the point you want to start cleaning up your
+migrations. Therefore, you can let them be deleted without any second thoughts.
