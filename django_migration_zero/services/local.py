@@ -10,7 +10,7 @@ from django_migration_zero.helpers.logger import get_logger
 
 
 class ResetMigrationFiles:
-    help = "Remove all local migrations files and create new initial ones."  # noqa: A003
+    help = "Remove all local migrations files and create new initial ones."
 
     dry_run: bool
     exclude_initials: bool
