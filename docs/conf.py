@@ -36,7 +36,7 @@ from django_migration_zero import __version__  # noqa: E402
 # -- Project information -----------------------------------------------------
 
 project = "django-migration-zero"
-copyright = "2023, Ambient Innovation: GmbH"  # noqa: A001
+copyright = "2024, Ambient Innovation: GmbH"  # noqa: A001
 author = "Ambient Innovation: GmbH <hello@ambient.digital>"
 version = __version__
 release = __version__
