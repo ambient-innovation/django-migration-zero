@@ -15,7 +15,7 @@ management commands to recreate your migration files and updating your migration
 * [PyPI](https://pypi.org/project/django-migration-zero/)
 * [GitHub](https://github.com/ambient-innovation/django-migration-zero)
 * [Full documentation](https://django-migration-zero.readthedocs.io/en/latest/index.html)
-* Creator & Maintainer: [Ambient Digital](https://ambient.digital)
+* Creator & Maintainer: [Ambient Digital](https://ambient.digital/)
 
 ## Features
 
@@ -144,6 +144,7 @@ Example: run all hooks of pre-push stage
 - To build the documentation run: `sphinx-build docs/ docs/_build/html/`.
 - Open `docs/_build/html/index.html` to see the documentation.
 
+
 ### Translation files
 
 If you have added custom text, make sure to wrap it in `_()` where `_` is
@@ -160,6 +161,7 @@ How to compile translation files:
 * Navigate to `django-migration-zero`
 * `python manage.py compilemessages`
 * Have a look at the new/changed files within `django_migration_zero/locale`
+
 
 ### Publish to ReadTheDocs.io
 
