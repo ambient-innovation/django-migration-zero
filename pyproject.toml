@@ -48,7 +48,7 @@ dev = [
    'm2r2==0.3.3.post2',
    'mistune<2.0.0',
    'flit~=3.9',
-   'ambient-package-update~=24.6.1',
+   'ambient-package-update~=24.6.3',
    'unittest-parametrize~=1.3',
 ]
 

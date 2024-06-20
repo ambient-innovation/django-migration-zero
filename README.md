@@ -17,6 +17,7 @@ management commands to recreate your migration files and updating your migration
 * [Full documentation](https://django-migration-zero.readthedocs.io/en/latest/index.html)
 * Creator & Maintainer: [Ambient Digital](https://ambient.digital/)
 
+
 ## Features
 
 * Remove all existing local migration files and recreate them as initial migrations
@@ -48,7 +49,6 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
 
 ## Installation
 
-
 - Install the package via pip:
 
   `pip install django-migration-zero`
@@ -72,8 +72,7 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
   `python ./manage.py migrate`
 
 
-* Add this block to your loggers in your main Django `settings.py` to show
-logs in your console.
+- Add this block to your loggers in your main Django `settings.py` to show logs in your console.
 
 ```python
 "django_migration_zero": {
@@ -82,7 +81,6 @@ logs in your console.
     "propagate": True,
 },
 ```
-
 
 ## Contribute
 
@@ -199,3 +197,4 @@ being rendered by this updater. It works similar to well-known updaters like `py
 
 To run an update, refer to the [documentation page](https://pypi.org/project/ambient-package-update/)
 of the "ambient-package-update".
+
