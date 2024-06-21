@@ -11,6 +11,14 @@ repos:
       # Run the Ruff formatter.
       - id: ruff-format
 
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: 1.16.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies:
+        - black==24.4.2
+        files: '(?:README\.md|docs\/.*\.(?:md|rst))'
+
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.16.0
     hooks:

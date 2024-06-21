@@ -1,5 +1,8 @@
 # Changelog
 
+* *2.0.3* (2024-06-21)
+  * Linted docs with `blacken-docs` via `ambient-package-update`
+
 * *2.0.2* (2024-06-20)
   * Internal updates via `ambient-package-update`
 

@@ -26,9 +26,13 @@
 - Add this block to your loggers in your main Django `settings.py` to show logs in your console.
 
 ```python
-"django_migration_zero": {
-    "handlers": ["console"],
-    "level": "INFO",
-    "propagate": True,
-},
+LOGGING = {
+    "loggers": {
+        "django_migration_zero": {
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
 ```
