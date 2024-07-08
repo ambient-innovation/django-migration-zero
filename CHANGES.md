@@ -1,5 +1,9 @@
 # Changelog
 
+* *2.1.0* (2024-07-09)
+  * Discover apps in nested directories
+  * Use `BASE_DIR` instead of `MIGRATION_ZERO_APPS_DIR`
+
 * *2.0.3* (2024-06-21)
   * Linted docs with `blacken-docs` via `ambient-package-update`
 
