@@ -20,7 +20,7 @@ def build_migration_directory_path(*, app_path: Path) -> Path:
     return app_path / "migrations"
 
 
-def get_local_django_apps() -> list[AppConfig]:
+def get_local_django_apps() -> List[AppConfig]:
     """
     Iterate all installed Django apps and detect local ones.
     """
