@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from django.core.management import call_command
 
 from django_migration_zero.helpers.file_system import (
@@ -23,17 +25,23 @@ class ResetMigrationFiles:
 
     def process(self):
         logger = get_logger()
-        local_app_list = get_local_django_apps()
+        local_apps = get_local_django_apps()
 
-        for app_label in local_app_list:
-            if not has_migration_directory(app_label=app_label):
-                logger.debug(f"Skipping app {app_label!r}. No migration package detected.")
+        for app_config in local_apps:
+            app_path = Path(app_config.path)
+
+            if not has_migration_directory(app_path=app_path):
+                logger.debug(f"Skipping app {app_config.label!r}. No migration package detected.")
                 continue
 
-            migration_file_list = get_migration_files(app_label=app_label, exclude_initials=self.exclude_initials)
+            migration_file_list = get_migration_files(
+                app_label=app_config.label,
+                app_path=app_path,
+                exclude_initials=self.exclude_initials,
+            )
 
             for migration_file in migration_file_list:
-                delete_file(filename=migration_file, app_label=app_label, dry_run=self.dry_run)
+                delete_file(filename=migration_file, app_path=app_path, dry_run=self.dry_run)
 
         logger.info("Recreating new initial migration files...")
         call_command("makemigrations")

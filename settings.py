@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django_migration_zero",
     # Local
     "testapp",
+    "testapp.nested_app",
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
-MIGRATION_ZERO_APPS_DIR = BASE_DIR / "django-migration-zero"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
