@@ -25,10 +25,10 @@ def get_local_django_apps() -> list[AppConfig]:
     Iterate all installed Django apps and detect local ones.
     """
     local_apps = []
-    local_path = str(settings.BASE_DIR)
+    local_path = str(settings.BASE_DIR).replace("\\", "/")
     logger.info("Getting local Django apps...")
     for app_config in apps.get_app_configs():
-        app_path = str(app_config.path)
+        app_path = str(app_config.path).replace("\\", "/")
         if app_path.startswith(local_path) and "site-packages" not in app_path:
             logger.info(f"Local app {app_config.label!r} discovered.")
             local_apps.append(app_config)
@@ -54,11 +54,11 @@ def get_migration_files(*, app_label: str, app_path: Path, exclude_initials: boo
 
     logger.info(f"Getting migration files from app {app_label!r}...")
     migration_dir = build_migration_directory_path(app_path=app_path)
-    file_pattern = r"^\d{4}_\w+\.py$"
+    file_pattern = r"^\d{4,}_\w+\.py$"
     for filename in os.listdir(migration_dir):
         if re.match(file_pattern, filename):
             if exclude_initials:
-                initial_pattern = r"^\d{4}_initial.py$"
+                initial_pattern = r"^\d{4,}_initial.py$"
                 if re.match(initial_pattern, filename):
                     logger.debug(f"File {filename!r} ignored since it's an initial migration.")
                     continue
