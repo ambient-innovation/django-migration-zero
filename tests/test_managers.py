@@ -5,6 +5,7 @@ from django.db import ProgrammingError
 from django.test import TestCase
 
 from django_migration_zero.exceptions import MissingMigrationZeroConfigRecordError
+from django_migration_zero.managers import MigrationZeroConfigurationQuerySet
 from django_migration_zero.models import MigrationZeroConfiguration
 
 
@@ -18,7 +19,7 @@ class MigrationZeroConfigurationManagerTest(TestCase):
     def test_fetch_singleton_singleton_exists_via_migration(self):
         self.assertEqual(MigrationZeroConfiguration.objects.all().count(), 1)
 
-    @mock.patch.object(MigrationZeroConfiguration.objects, "count", side_effect=ProgrammingError)
+    @mock.patch.object(MigrationZeroConfigurationQuerySet, "get", side_effect=ProgrammingError)
     def test_fetch_singleton_database_error(self, *args):
         self.assertIsNone(MigrationZeroConfiguration.objects.fetch_singleton())
 

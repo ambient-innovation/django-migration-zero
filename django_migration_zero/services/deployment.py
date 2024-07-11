@@ -1,7 +1,7 @@
 from logging import Logger
 
 from django.core.management import call_command
-from django.db import connections
+from django.db import connections, transaction
 
 from django_migration_zero.exceptions import InvalidMigrationTreeError
 from django_migration_zero.helpers.logger import get_logger
@@ -20,11 +20,12 @@ class DatabasePreparationService:
 
         self.logger = get_logger()
 
+    @transaction.atomic
     def process(self):
         self.logger.info("Starting migration zero database adjustments...")
 
         # Fetch configuration singleton from database
-        config_singleton = MigrationZeroConfiguration.objects.fetch_singleton()
+        config_singleton = MigrationZeroConfiguration.objects.select_for_update().fetch_singleton()
 
         # If we encountered a problem or are not planning to do a migration reset, we are done here
         if not (config_singleton and config_singleton.is_migration_applicable):

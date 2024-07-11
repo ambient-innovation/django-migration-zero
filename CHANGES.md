@@ -1,5 +1,8 @@
 # Changelog
 
+* *master* (unreleased)
+  * Lock rows to enable parallel deployments
+
 * *2.1.0* (2024-07-09)
   * Discover apps in nested directories
   * Use `BASE_DIR` instead of `MIGRATION_ZERO_APPS_DIR`
