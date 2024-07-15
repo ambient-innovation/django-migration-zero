@@ -2,6 +2,7 @@ from logging import Logger
 
 from django.core.management import call_command
 from django.db import connections, transaction
+from django.db.migrations.recorder import MigrationRecorder
 
 from django_migration_zero.exceptions import InvalidMigrationTreeError
 from django_migration_zero.helpers.logger import get_logger
@@ -35,8 +36,7 @@ class DatabasePreparationService:
         # records of the other ones
         self.logger.info("Resetting migration history for all apps...")
 
-        with connections["default"].cursor() as cursor:
-            cursor.execute("DELETE FROM `django_migrations`")
+        MigrationRecorder.Migration.objects.all().delete()
 
         # Apply migrations via fake because the database is already up-to-date
         self.logger.info("Populating migration history.")

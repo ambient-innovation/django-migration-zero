@@ -1,6 +1,7 @@
 # Changelog
 
 * *master* (unreleased)
+  * Use ORM to reset `django_migrations` table
   * Lock rows to enable parallel deployments
 
 * *2.1.0* (2024-07-09)
