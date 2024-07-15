@@ -1,5 +1,8 @@
 # Changelog
 
+* *master* (unreleased)
+  * Use ORM to reset `django_migrations` table
+
 * *2.1.0* (2024-07-09)
   * Discover apps in nested directories
   * Use `BASE_DIR` instead of `MIGRATION_ZERO_APPS_DIR`
