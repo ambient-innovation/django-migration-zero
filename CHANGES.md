@@ -4,6 +4,7 @@
   * Use ORM to reset `django_migrations` table
   * Dropped Python 3.8 support
   * Added multiple ruff linters
+  * Updated GitHub actions
 
 * *2.1.0* (2024-07-09)
   * Discover apps in nested directories
