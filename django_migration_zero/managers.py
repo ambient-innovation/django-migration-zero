@@ -5,11 +5,11 @@ from django_migration_zero.exceptions import MissingMigrationZeroConfigRecordErr
 from django_migration_zero.helpers.logger import get_logger
 
 
-class MigrationZeroConfigurationQuerySet(models.QuerySet):
+class MigrationZeroConfigurationManager(models.Manager):
     def fetch_singleton(self) -> None:
         logger = get_logger()
         try:
-            config_singleton = self.get()
+            config_singleton = self.select_for_update().get()
         except ProgrammingError:
             logger.warning(
                 "The migration zero table is missing. This might be ok for the first installation of "

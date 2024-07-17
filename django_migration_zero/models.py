@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from django_migration_zero.helpers.logger import get_logger
-from django_migration_zero.managers import MigrationZeroConfigurationQuerySet
+from django_migration_zero.managers import MigrationZeroConfigurationManager
 
 
 class MigrationZeroConfiguration(models.Model):
@@ -14,7 +14,7 @@ class MigrationZeroConfiguration(models.Model):
     )
     migration_date = models.DateField(_("Migration date"), null=True, blank=True)
 
-    objects = MigrationZeroConfigurationQuerySet.as_manager()
+    objects = MigrationZeroConfigurationManager()
 
     class Meta:
         verbose_name = _("Configuration")
