@@ -2,6 +2,7 @@
 
 * *master* (unreleased)
   * Use ORM to reset `django_migrations` table
+  * Lock rows to enable parallel deployments
   * Dropped Python 3.8 support
   * Added multiple ruff linters
   * Updated GitHub actions

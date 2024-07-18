@@ -1,6 +1,7 @@
 from logging import Logger
 
 from django.core.management import call_command
+from django.db import transaction
 from django.db.migrations.recorder import MigrationRecorder
 
 from django_migration_zero.exceptions import InvalidMigrationTreeError
@@ -20,6 +21,7 @@ class DatabasePreparationService:
 
         self.logger = get_logger()
 
+    @transaction.atomic
     def process(self):
         self.logger.info("Starting migration zero database adjustments...")
 

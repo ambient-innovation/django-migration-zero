@@ -1,7 +1,9 @@
 from logging import Logger
+from threading import Thread
 from unittest import mock
+from unittest.mock import Mock, call
 
-from django.test import TestCase
+from django.test import TestCase, TransactionTestCase
 from django.utils import timezone
 from freezegun import freeze_time
 
@@ -81,3 +83,56 @@ class DatabasePreparationServiceTest(TestCase):
 
         self.assertEqual(calls[1].args, ("migrate",))
         self.assertEqual(calls[1].kwargs, {"check": True})
+
+
+class DatabasePreparationServiceTestParallelDeployment(TransactionTestCase):
+    @mock.patch("django_migration_zero.services.deployment.get_logger")
+    def test_process_multiple_threads(self, mock_get_logger):
+        """Test parallel deployments to multiple pods."""
+        # Setup
+        mock_logger_info = Mock(return_value=None)
+        mock_get_logger.return_value = Mock(info=mock_logger_info)
+        config, _ = MigrationZeroConfiguration.objects.update_or_create(
+            defaults={
+                "migration_imminent": True,
+                "migration_date": timezone.now().date(),
+            }
+        )
+
+        # Testable
+        number_of_pods = 1
+        threads = [Thread(target=DatabasePreparationService().process) for _ in range(number_of_pods)]
+
+        for thread in threads:
+            thread.start()
+
+        for thread in threads:
+            thread.join()
+
+        # Assertions
+        self.assertEqual(mock_logger_info.call_count, 6 + number_of_pods, msg=mock_logger_info.call_args_list)
+        mock_logger_info.assert_has_calls(
+            [
+                call("Starting migration zero database adjustments..."),
+                call("Resetting migration history for all apps..."),
+                call("Populating migration history."),
+                call("Checking migration integrity."),
+                call("All good."),
+                call("Deactivating migration zero switch in database."),
+                call("Process successfully finished."),
+            ],
+            any_order=True,
+        )
+        self.assertEqual(
+            len(
+                [
+                    mock_call
+                    for mock_call in mock_logger_info.call_args_list
+                    if mock_call == call("Starting migration zero database adjustments...")
+                ]
+            ),
+            number_of_pods,
+        )
+
+        config.refresh_from_db()
+        self.assertFalse(config.migration_imminent)
