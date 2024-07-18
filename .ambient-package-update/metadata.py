@@ -8,6 +8,7 @@ from ambient_package_update.metadata.constants import (
 from ambient_package_update.metadata.maintainer import PackageMaintainer
 from ambient_package_update.metadata.package import PackageMetadata
 from ambient_package_update.metadata.readme import ReadmeContent
+from ambient_package_update.metadata.ruff_ignored_inspection import RuffIgnoredInspection
 
 METADATA = PackageMetadata(
     package_name="django_migration_zero",
@@ -26,12 +27,14 @@ METADATA = PackageMetadata(
     has_migrations=True,
     readme_content=ReadmeContent(uses_internationalisation=True),
     dependencies=[
-        "Django>=3.2",
+        f"Django>={SUPPORTED_DJANGO_VERSIONS[0]}",
     ],
     supported_django_versions=SUPPORTED_DJANGO_VERSIONS,
     supported_python_versions=SUPPORTED_PYTHON_VERSIONS,
     optional_dependencies={
         "dev": [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
     },
-    ruff_ignore_list=[],
+    ruff_ignore_list=[
+        RuffIgnoredInspection(key="TRY003", comment="Avoid specifying long messages outside the exception class"),
+    ],
 )

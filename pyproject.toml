@@ -3,7 +3,7 @@ requires = ["flit_core>=3.4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "django-migration-zero"
+name = "django_migration_zero"
 authors = [
     {'name' = 'Ambient Digital', 'email' = 'hello@ambient.digital'},
 ]
@@ -20,7 +20,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -30,7 +29,7 @@ classifiers = [
 dynamic = ["version", "description"]
 license = {"file" = "LICENSE.md"}
 dependencies = [
-    'Django>=3.2',
+    'Django>=4.2',
 ]
 
 
@@ -41,14 +40,15 @@ dev = [
    'pytest-django~=4.7',
    'pytest-mock~=3.12',
    'coverage~=7.3',
-   'pre-commit~=3.5',
-   'ruff~=0.1.7',
+   'pre-commit~=3.7',
+   'ruff~=0.4',
    'sphinx~=7.1',
    'sphinx-rtd-theme~=2.0',
    'm2r2==0.3.3.post2',
    'mistune<2.0.0',
    'flit~=3.9',
-   'ambient-package-update~=24.6.4',
+   'keyring~=25.2',
+   'ambient-package-update~=24.7.6',
    'unittest-parametrize~=1.3',
 ]
 
@@ -74,18 +74,24 @@ lint.select = [
     "DTZ",     # flake8-datetimez
     "DJ",      # flake8-django
     "TD",      # flake8-to-do
-    "RUF100",  # Removes unnecessary "#noqa" comments
+    "RUF",     # Ruff-specific rules
     "YTT",     # Avoid non-future-prove usages of "sys"
-    # "FBT",     # Protects you from the "boolean trap bug"
     "C4",      # Checks for unnecessary conversions
     "PIE",     # Bunch of useful rules
-    # "SIM",     # Simplifies your code
     "INT",     # Validates your gettext translation strings
     "PERF",    # PerfLint
     "PGH",     # No all-purpose "# noqa" and eval validation
     "PL",      # PyLint
+    "LOG",     # flake8-logging
+    "TID",     # flake8-tidy-imports
+    "PLR2004", # Magic numbers
+    "BLE",     # Checks for except clauses that catch all exceptions
+    "ANN401",  # Checks that function arguments are annotated with a more specific type than Any
+    "TRY",     # Clean try/except
+    "ERA",     # Commented out code
 ]
 lint.ignore = [
+    'TRY003', # Avoid specifying long messages outside the exception class
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
@@ -100,16 +106,21 @@ lint.fixable = [
     "DTZ",     # flake8-datetimez
     "DJ",      # flake8-django
     "TD",      # flake8-to-do
-    "RUF100",  # Removes unnecessary "#noqa" comments
+    "RUF",     # Ruff-specific rules
     "YTT",     # Avoid non-future-prove usages of "sys"
-    # "FBT",     # Protects you from the "boolean trap bug"
     "C4",      # Checks for unnecessary conversions
     "PIE",     # Bunch of useful rules
-    # "SIM",     # Simplifies your code
     "INT",     # Validates your gettext translation strings
     "PERF",    # PerfLint
     "PGH",     # No all-purpose "# noqa" and eval validation
     "PL",      # PyLint
+    "LOG",     # flake8-logging
+    "TID",     # flake8-tidy-imports
+    "PLR2004", # Magic numbers
+    "BLE",     # Checks for except clauses that catch all exceptions
+    "ANN401",  # Checks that function arguments are annotated with a more specific type than Any
+    "TRY",     # Clean try/except
+    "ERA",     # Commented out code
 ]
 lint.unfixable = []
 
@@ -141,7 +152,7 @@ exclude = [
 line-length = 120
 
 # Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 # Assume Python 3.12
 target-version = "py312"
@@ -161,10 +172,6 @@ line-ending = "auto"
 
 [tool.tox]
 legacy_tox_ini = """
-[tox]
-envlist = py{38,39,310,311}-django{32,41,42}
-isolated_build = True
-
 [testenv]
 # Django deprecation overview: https://www.djangoproject.com/download/
 deps =
@@ -176,7 +183,6 @@ commands =
 
 [gh-actions]
 python =
-    3.8: py38
     3.9: py39
     3.10: py310
     3.11: py311
