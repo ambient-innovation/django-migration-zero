@@ -12,7 +12,7 @@ from ambient_package_update.metadata.ruff_ignored_inspection import RuffIgnoredI
 
 METADATA = PackageMetadata(
     package_name="django_migration_zero",
-    module_name="django_migration_zero",
+    github_package_group="ambient-innovation",
     authors=[
         PackageAuthor(
             name="Ambient Digital",

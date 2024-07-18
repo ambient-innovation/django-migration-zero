@@ -1,11 +1,13 @@
 # Changelog
 
-* *master* (unreleased)
+* *2.2.0* (2024-07-18)
   * Use ORM to reset `django_migrations` table
   * Lock rows to enable parallel deployments
   * Dropped Python 3.8 support
-  * Added multiple ruff linters
+  * Added multiple ruff linters and updated packages
   * Updated GitHub actions
+  * Added SECURITY.md
+  * Internal updates via `ambient-package-update`
 
 * *2.1.0* (2024-07-09)
   * Discover apps in nested directories

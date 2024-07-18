@@ -48,7 +48,7 @@ dev = [
    'mistune<2.0.0',
    'flit~=3.9',
    'keyring~=25.2',
-   'ambient-package-update~=24.7.6',
+   'ambient-package-update',
    'unittest-parametrize~=1.3',
 ]
 
