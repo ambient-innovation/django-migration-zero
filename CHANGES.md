@@ -1,5 +1,8 @@
 # Changelog
 
+* *2.3.0* (2024-08-12)
+  * Added Django 5.1 support
+
 * *2.2.0* (2024-07-18)
   * Use ORM to reset `django_migrations` table
   * Lock rows to enable parallel deployments
