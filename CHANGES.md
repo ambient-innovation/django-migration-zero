@@ -1,5 +1,8 @@
 # Changelog
 
+* *2.3.1* (2024-08-12)
+  * Fixed test matrix
+
 * *2.3.0* (2024-08-12)
   * Added Django 5.1 support
 
