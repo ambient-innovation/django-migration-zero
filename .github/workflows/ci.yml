@@ -3,6 +3,7 @@ name: Unit tests
 on:
   push:
     branches: [ '**' ]
+  pull_request:
 
 jobs:
   linting:

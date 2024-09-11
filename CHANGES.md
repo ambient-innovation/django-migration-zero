@@ -1,5 +1,8 @@
 # Changelog
 
+* *2.3.4* (2024-09-11)
+  * Added GitHub action trigger for PRs
+
 * *2.3.3* (2024-09-11)
   * Fixed coverage setup due to changes at GitHub
 
