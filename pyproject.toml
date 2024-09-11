@@ -3,7 +3,7 @@ requires = ["flit_core>=3.4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "django_migration_zero"
+name = "django-migration-zero"
 authors = [
     {'name' = 'Ambient Digital', 'email' = 'hello@ambient.digital'},
 ]

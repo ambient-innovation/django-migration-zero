@@ -1,5 +1,8 @@
 # Changelog
 
+* *2.3.2* (2024-09-11)
+  * Fixed package name
+
 * *2.3.1* (2024-08-12)
   * Fixed test matrix
 
