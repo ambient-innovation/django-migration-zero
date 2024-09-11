@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-data-${{ matrix.python-version }}-${{ matrix.django-version }}
-          path: '.coverage*'
+          path: 'artifacts/python-coverage.xml'
 
   coverage:
     name: Coverage
@@ -86,7 +86,7 @@ jobs:
       - name: Download data
         uses: actions/download-artifact@v4
         with:
-          pattern: coverage-data*
+          pattern: artifacts/python-coverage.xml
           merge-multiple: true
 
       - name: Combine coverage and fail if it's <100.0%

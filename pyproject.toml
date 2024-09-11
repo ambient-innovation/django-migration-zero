@@ -200,6 +200,7 @@ python_files = [
 
 [tool.coverage.run]
 branch = true
+filename = "artifacts/python-coverage.xml"
 source = [
     "django_migration_zero",
     "tests",
