@@ -40,7 +40,7 @@ dev = [
    'freezegun~=1.3',
    'pytest-django~=4.7',
    'pytest-mock~=3.12',
-   'coverage~=7.3',
+   'coverage~=7.6',
    'pre-commit~=3.7',
    'ruff~=0.4',
    'sphinx~=7.1',
@@ -196,4 +196,38 @@ python_files = [
     "tests.py",
     "test_*.py",
     "*_tests.py",
+]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = [
+    "django_migration_zero",
+    "tests",
+]
+omit = [
+  "setup.py",
+  "*_test.py",
+  "tests.py",
+  "testapp/*",
+  "tests/*",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+    # Don't check type hinting imports
+    "if typing.TYPE_CHECKING:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.path]
+source = [
+    "django_migration_zero",
+    ".tox/**/site-packages",
 ]
