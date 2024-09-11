@@ -200,7 +200,7 @@ python_files = [
 
 [tool.coverage.run]
 branch = true
-filename = "artifacts/python-coverage.xml"
+parallel = true
 source = [
     "django_migration_zero",
     "tests",
@@ -224,4 +224,10 @@ exclude_also = [
     # Don't check type hinting imports
     "if typing.TYPE_CHECKING:",
     "if TYPE_CHECKING:",
+]
+
+[tool.coverage.path]
+source = [
+    "django_migration_zero",
+    ".tox/**/site-packages",
 ]
