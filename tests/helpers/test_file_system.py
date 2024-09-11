@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from unittest import mock
 
@@ -64,6 +65,17 @@ class HelperFileSystemTest(TestCase):
                 exclude_initials=True,
             ),
             [],
+        )
+
+    @mock.patch.object(os, "listdir", return_value=["0002_my_migration.py"])
+    def test_get_migration_files_exclude_initials_no_initials(self, *args):
+        self.assertEqual(
+            get_migration_files(
+                app_label=self.django_migration_zero_config.label,
+                app_path=Path(self.django_migration_zero_config.path),
+                exclude_initials=True,
+            ),
+            ["0002_my_migration.py"],
         )
 
     @mock.patch("django_migration_zero.helpers.file_system.os.unlink")
