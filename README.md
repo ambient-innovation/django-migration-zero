@@ -143,7 +143,7 @@ Example: run all hooks of pre-push stage
 
 ### Update documentation
 
-- To build the documentation run: `sphinx-build docs/ docs/_build/html/`.
+- To build the documentation, run: `sphinx-build docs/ docs/_build/html/`.
 - Open `docs/_build/html/index.html` to see the documentation.
 
 

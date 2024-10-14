@@ -2,7 +2,8 @@ name: Unit tests
 
 on:
   push:
-    branches: [ '**' ]
+    branches:
+    - master
   pull_request:
 
 jobs:
@@ -21,7 +22,7 @@ jobs:
 
       - name: Run pre-commit hooks
         run: pre-commit run --all-files --hook-stage push
-  
+
   validate_migrations:
     name: Validate migrations
     runs-on: ubuntu-22.04
@@ -43,7 +44,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        python-version: ['3.9', '3.10', '3.11', '3.12', ]
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13', ]
         django-version: ['42', '50', '51', ]
 
         exclude:
