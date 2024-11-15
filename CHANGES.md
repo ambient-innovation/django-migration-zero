@@ -1,5 +1,8 @@
 # Changelog
 
+* *2.3.6* (2024-11-15)
+  * Internal updates via `ambient-package-update`
+
 * *2.3.5* (2024-10-14)
   * Added Python 3.13 support
   * Added Djade linter to pre-commit

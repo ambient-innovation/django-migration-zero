@@ -43,3 +43,14 @@ repos:
             charts/.*
             |.*\.py
           )$
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: no-commit-to-branch
+        args:
+          [
+            "--pattern",
+            '^^(?!(?:feature|hotfix|bugfix|refactor|maintenance)/[\w\d\-_#]+).*$',
+          ]
+        stages: [ pre-commit ]
