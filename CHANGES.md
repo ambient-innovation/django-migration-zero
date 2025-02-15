@@ -3,6 +3,9 @@
 **2.3.7** (2025-02-15)
   * Maintenance updates via ambient-package-update
 
+**2.3.7** (2025-02-15)
+  * Maintenance updates via ambient-package-update
+
 * *2.3.6* (2024-11-15)
   * Internal updates via `ambient-package-update`
 
