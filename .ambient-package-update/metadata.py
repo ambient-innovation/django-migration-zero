@@ -11,7 +11,7 @@ from ambient_package_update.metadata.readme import ReadmeContent
 from ambient_package_update.metadata.ruff_ignored_inspection import RuffIgnoredInspection
 
 METADATA = PackageMetadata(
-    package_name="django_migration_zero",
+    package_name="django-migration-zero",
     github_package_group="ambient-innovation",
     authors=[
         PackageAuthor(
@@ -20,7 +20,7 @@ METADATA = PackageMetadata(
         ),
     ],
     maintainer=PackageMaintainer(name="Ambient Digital", url="https://ambient.digital/", email="hello@ambient.digital"),
-    company="Ambient Innovation: GmbH",
+    licenser="Ambient Innovation: GmbH",
     license=LICENSE_MIT,
     license_year=2023,
     development_status="5 - Production/Stable",
