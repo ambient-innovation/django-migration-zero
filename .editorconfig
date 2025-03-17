@@ -11,7 +11,6 @@ trim_trailing_whitespace = true
 [*.{py,rst,ini}]
 indent_style = space
 indent_size = 4
-ij_continuation_indent_size = 8
 
 [*.yml]
 indent_style = space

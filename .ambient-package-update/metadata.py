@@ -32,7 +32,7 @@ METADATA = PackageMetadata(
     supported_django_versions=SUPPORTED_DJANGO_VERSIONS,
     supported_python_versions=SUPPORTED_PYTHON_VERSIONS,
     optional_dependencies={
-        "dev": [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3"],
+        "dev": [*DEV_DEPENDENCIES, "unittest-parametrize~=1.3", "freezegun~=1.5"],
     },
     ruff_ignore_list=[
         RuffIgnoredInspection(key="TRY003", comment="Avoid specifying long messages outside the exception class"),

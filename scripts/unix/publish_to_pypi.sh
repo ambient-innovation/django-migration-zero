@@ -1,2 +1,3 @@
- flit publish --repository testpypi
- flit publish
+#!/bin/bash
+flit publish --repository testpypi
+flit publish
