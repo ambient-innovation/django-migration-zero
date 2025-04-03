@@ -13,8 +13,8 @@ classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
     "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",
     "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
@@ -204,8 +204,8 @@ legacy_tox_ini = """
 # Django deprecation overview: https://www.djangoproject.com/download/
 deps =
     django42: Django==4.2.*
-    django50: Django==5.0.*
     django51: Django==5.1.*
+    django52: Django==5.2.*
 extras = dev,
 commands =
     coverage run -m pytest --ds settings tests
