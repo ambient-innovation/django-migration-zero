@@ -49,13 +49,11 @@ jobs:
 
         exclude:
           - python-version: '3.9'
-            django-version: 50
+            django-version: 52
           - python-version: '3.9'
             django-version: 51
           - python-version: "3.13"
             django-version: 42
-          - python-version: "3.13"
-            django-version: 50
 
     steps:
       - uses: actions/checkout@v4
