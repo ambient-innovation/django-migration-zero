@@ -51,7 +51,7 @@ Example: run single hook
 
 Example: run all hooks of pre-push stage
 
-    pre-commit run --all-files --hook-stage push
+    pre-commit run --all-files
 
 ## Update documentation
 
@@ -75,4 +75,3 @@ How to compile translation files:
 * Navigate to `django-migration-zero`
 * `python manage.py compilemessages`
 * Have a look at the new/changed files within `django_migration_zero/locale`
-
