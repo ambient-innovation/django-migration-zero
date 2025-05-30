@@ -4,7 +4,7 @@ The maintainers of this package take security bugs seriously. We appreciate your
 disclose your findings, and will make every effort to acknowledge your contributions.
 
 To report a security issue, please use the GitHub Security
-Advisory ["Report a Vulnerability"](https://github.com/ambient-innovation/django-migration-zero/security/advisories/new) 
+Advisory ["Report a Vulnerability"](https://github.com/ambient-innovation/django-migration-zero/security/advisories/new)
 tab.
 
 The maintainers will send a response indicating the next steps in handling your report. After the initial reply to
