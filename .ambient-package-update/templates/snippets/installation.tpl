@@ -2,18 +2,18 @@
 
 - Install the package via pip:
 
-  `pip install {{ package_name|replace("_", "-") }}`
+  `pip install {{ module_name|replace("_", "-") }}`
 
   or via pipenv:
 
-  `pipenv install {{ package_name|replace("_", "-") }}`
+  `pipenv install {{ module_name|replace("_", "-") }}`
 
 - Add module to `INSTALLED_APPS` within the main django `settings.py`:
 
     ````
     INSTALLED_APPS = (
         ...
-        '{{ package_name }}',
+        '{{ module_name }}',
     )
      ````
 
@@ -27,6 +27,11 @@
 
 ```python
 LOGGING = {
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
     "loggers": {
         "django_migration_zero": {
             "handlers": ["console"],

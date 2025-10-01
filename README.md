@@ -17,7 +17,6 @@ management commands to recreate your migration files and updating your migration
 * [Full documentation](https://django-migration-zero.readthedocs.io/en/latest/index.html)
 * Creator & Maintainer: [Ambient Digital](https://ambient.digital/)
 
-
 ## Features
 
 * Remove all existing local migration files and recreate them as initial migrations
@@ -62,20 +61,23 @@ fixing squashed migrations you won't need, you can use the "migration zero" patt
     ````
     INSTALLED_APPS = (
         ...
-        'django-migration-zero',
+        'django_migration_zero',
     )
      ````
-
 
 - Apply migrations by running:
 
   `python ./manage.py migrate`
 
-
 - Add this block to your loggers in your main Django `settings.py` to show logs in your console.
 
 ```python
 LOGGING = {
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
     "loggers": {
         "django_migration_zero": {
             "handlers": ["console"],

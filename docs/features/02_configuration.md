@@ -16,6 +16,11 @@ Note, that in this example, we are only logging to the console.
 
 ```python
 LOGGING = {
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
     "loggers": {
         "django_migration_zero": {
             "handlers": ["console"],

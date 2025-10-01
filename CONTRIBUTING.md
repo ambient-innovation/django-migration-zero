@@ -58,7 +58,6 @@ Example: run all hooks of pre-push stage
 - To build the documentation, run: `sphinx-build docs/ docs/_build/html/`.
 - Open `docs/_build/html/index.html` to see the documentation.
 
-
 ### Translation files
 
 If you have added custom text, make sure to wrap it in `_()` where `_` is
