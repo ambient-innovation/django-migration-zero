@@ -38,7 +38,7 @@ jobs:
         run: python -m pip install -U uv && uv sync --frozen --group dev
 
       - name: Validate migration integrity
-        run: python manage.py makemigrations --check --dry-run
+        run: uv run python manage.py makemigrations --check --dry-run
 
   tests:
     name: Python ${{ matrix.python-version }}, django ${{ matrix.django-version }}
