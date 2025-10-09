@@ -196,25 +196,34 @@ line-ending = "auto"
 ]
 
 [tool.tox]
-legacy_tox_ini = """
-[testenv]
-# Django deprecation overview: https://www.djangoproject.com/download/
-deps =
-    django42: Django==4.2.*
-    django51: Django==5.1.*
-    django52: Django==5.2.*
-extras = dev,
-commands =
-     pytest --cov=django_removals --cov-report=term --cov-report=xml --ds settings test
+requires = ["tox>=4", "tox-uv>=1.0.0"]
+env_list = ["django42", "django51", "django52", ]
 
-[gh-actions]
-python =
-    3.10: py310
-    3.11: py311
-    3.12: py312
-    3.13: py313
-    3.14: py314
-"""
+[tool.tox.env_run_base]
+# Django deprecation overview: https://www.djangoproject.com/download/
+package = "wheel"
+wheel_build_env = ".pkg"
+runner = "uv-venv-lock-runner"
+groups = ["dev",]
+commands = [
+    ["pytest", "--cov=django_migration_zero", "--cov-report=term", "--cov-report=xml", "--ds", "settings", "tests"]
+]
+
+[tool.tox.env.django42]
+deps = ["Django==4.2.*"]
+
+[tool.tox.env.django51]
+deps = ["Django==5.1.*"]
+
+[tool.tox.env.django52]
+deps = ["Django==5.2.*"]
+
+[tool.tox.gh_actions.python]
+"3.10" = "py310"
+"3.11" = "py311"
+"3.12" = "py312"
+"3.13" = "py313"
+"3.14" = "py314"
 
 [tool.pytest.ini_options]
 python_files = [

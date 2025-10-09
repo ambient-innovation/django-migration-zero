@@ -62,8 +62,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
       - name: Install tox
-        run: pip install tox
+        run: uv tool install tox --with tox-uv
       - name: Run Tests
         env:
           TOXENV: django${{ matrix.django-version }}
@@ -72,7 +74,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-data-${{ matrix.python-version }}-${{ matrix.django-version }}
-          path: '${{ github.workspace }}/coverage.xml'
+          path: '${{ github.workspace }}/.coverage'
           include-hidden-files: true
           if-no-files-found: error
 
@@ -93,13 +95,14 @@ jobs:
       - name: Download data
         uses: actions/download-artifact@v4
         with:
-          path: ${{ github.workspace }}}/coverage-reports
+          path: ${{ github.workspace }}/coverage-reports
           pattern: coverage-data-*
           merge-multiple: false
 
       - name: Combine coverage and fail if it's <100.0%
         run: |
-          python -m coverage combine coverage-reports/**/*.xml
+          python -m coverage combine coverage-reports/*/.coverage
+          python -m coverage xml
           python -m coverage html --skip-covered --skip-empty
           python -m coverage report --fail-under=100.0
           echo "## Coverage summary" >> $GITHUB_STEP_SUMMARY
