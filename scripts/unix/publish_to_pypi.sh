@@ -1,3 +1,3 @@
 #!/bin/bash
-flit publish --repository testpypi
-flit publish
+uv publish --publish-url https://test.pypi.org/legacy/
+uv publish
