@@ -206,7 +206,7 @@ wheel_build_env = ".pkg"
 runner = "uv-venv-lock-runner"
 groups = ["dev",]
 commands = [
-    ["pytest", "--cov=django_migration_zero", "--cov-report=term", "--cov-report=xml", "--ds", "settings", "tests"]
+    ["pytest", "--cov=django_migration_zero", "--cov-report=term", "--cov-report=xml", "--ds", "settings","tests"]
 ]
 
 [tool.tox.env.django42]
