@@ -1,5 +1,8 @@
 # Changelog
 
+**2.3.11** (2025-10-10)
+  * Maintenance updates via ambient-package-update
+
 **2.3.10** (2025-10-01)
   * Fixed wrong module name in setup docs
   * Fixed missing console handler in setup docs
