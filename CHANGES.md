@@ -1,5 +1,8 @@
 # Changelog
 
+**2.3.12** (2025-10-13)
+  * Fixed TZ issue for migration date
+
 **2.3.11** (2025-10-10)
   * Maintenance updates via ambient-package-update
 
