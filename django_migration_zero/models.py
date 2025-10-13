@@ -33,7 +33,9 @@ class MigrationZeroConfiguration(models.Model):
             logger.info("Switch not active. Skipping migration zero process.")
             return False
 
-        if not self.migration_date == timezone.now().date():
+        # Use timezone.localdate() to get the current date in the active timezone
+        # This ensures the comparison works correctly regardless of the server's timezone
+        if not self.migration_date == timezone.localdate():
             logger.info("Security date doesn't match today. Skipping migration zero process.")
             return False
 
