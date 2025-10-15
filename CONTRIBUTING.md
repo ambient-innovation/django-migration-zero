@@ -4,7 +4,7 @@
 
 - Create a Python virtualenv and activate it
 - Install "uv" with `pip install -U uv`
-- Sync the requirements with `uv sync --frozen --group dev`
+- Sync the requirements with `uv sync --frozen --extra dev`
 
 ## Add functionality
 
