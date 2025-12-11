@@ -13,8 +13,8 @@ classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
     "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.1",
     "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
@@ -197,7 +197,7 @@ line-ending = "auto"
 
 [tool.tox]
 requires = ["tox>=4", "tox-uv>=1.0.0"]
-env_list = ["django42", "django51", "django52", ]
+env_list = ["django42", "django52", "django60", ]
 
 [tool.tox.env_run_base]
 # Django deprecation overview: https://www.djangoproject.com/download/
@@ -212,11 +212,11 @@ commands = [
 [tool.tox.env.django42]
 deps = ["Django==4.2.*"]
 
-[tool.tox.env.django51]
-deps = ["Django==5.1.*"]
-
 [tool.tox.env.django52]
 deps = ["Django==5.2.*"]
+
+[tool.tox.env.django60]
+deps = ["Django==6.0.*"]
 
 [tool.tox.gh_actions.python]
 "3.10" = "py310"
