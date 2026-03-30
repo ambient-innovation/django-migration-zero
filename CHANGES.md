@@ -1,5 +1,8 @@
 # Changelog
 
+**2.3.16** (2026-03-30)
+  * Maintenance updates via ambient-package-update
+
 **2.3.15** (2026-03-30)
   * Maintenance updates via ambient-package-update
 
