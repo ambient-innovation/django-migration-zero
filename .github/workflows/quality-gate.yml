@@ -1,0 +1,107 @@
+name: CI jobs
+
+on:
+  workflow_call:
+
+jobs:
+  linting:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install required packages
+        run: pip install pre-commit
+
+      - name: Run pre-commit hooks
+        run: pre-commit run --all-files
+
+  validate_migrations:
+    name: Validate migrations
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: python -m pip install -U uv && uv sync --frozen --extra dev
+
+      - name: Validate migration integrity
+        run: uv run python manage.py makemigrations --check --dry-run
+
+  tests:
+    name: Python ${{ matrix.python-version }}, django ${{ matrix.django-version }}
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14', ]
+        django-version: ['42', '52', '60', ]
+
+        exclude:
+          - python-version: '3.11'
+            django-version: 60
+          - python-version: '3.10'
+            django-version: 60
+          - python-version: '3.9'
+            django-version: 52
+          - python-version: "3.13"
+            django-version: 42
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.0.0
+      - name: Install tox
+        run: uv pip install --system tox tox-uv
+      - name: Run Tests
+        env:
+          TOXENV: django${{ matrix.django-version }}
+        run: tox
+      - name: Upload coverage data
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-data-${{ matrix.python-version }}-${{ matrix.django-version }}
+          path: '${{ github.workspace }}/.coverage'
+          include-hidden-files: true
+          if-no-files-found: error
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-24.04
+    needs: tests
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade coverage[toml]
+
+      - name: Download data
+        uses: actions/download-artifact@v8
+        with:
+          path: ${{ github.workspace }}/coverage-reports
+          pattern: coverage-data-*
+          merge-multiple: false
+
+      - name: Combine coverage and fail if it's <100.0%
+        run: |
+          python -m coverage combine coverage-reports/*/.coverage
+          python -m coverage xml
+          python -m coverage html --skip-covered --skip-empty
+          python -m coverage report --fail-under=100.0
+          echo "## Coverage summary" >> $GITHUB_STEP_SUMMARY
+          python -m coverage report --format=markdown >> $GITHUB_STEP_SUMMARY
