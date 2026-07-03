@@ -21,7 +21,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -31,7 +30,7 @@ classifiers = [
 dynamic = ["version"]
 description = "Holistic implementation of 'migration zero' pattern for Django covering local changes and in-production database adjustments."
 license = {"file" = "LICENSE.md"}
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     'Django>=4.2',
 ]
@@ -45,7 +44,7 @@ dev = [
    'pre-commit~=4.3',
    'sphinx~=7.4',
    'sphinx-rtd-theme~=3.0',
-   'm2r2~=0.3',
+   'sphinx-mdinclude~=0.6',
    'uv~=0.9',
    'keyring~=25.7',
    'ambient-package-update',
@@ -158,8 +157,8 @@ line-length = 120
 # Allow unused variables when underscore-prefixed.
 lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-# Assume Python 3.13
-target-version = "py313"
+# Match the minimum supported Python version (mirrors requires-python above)
+target-version = "py311"
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
@@ -220,7 +219,6 @@ deps = ["Django==5.2.*"]
 deps = ["Django==6.0.*"]
 
 [tool.tox.gh_actions.python]
-"3.10" = "py310"
 "3.11" = "py311"
 "3.12" = "py312"
 "3.13" = "py313"
