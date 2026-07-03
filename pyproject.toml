@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "django-migration-zero"
 authors = [
-    {'name' = 'Ambient Digital', 'email' = 'hello@ambient.digital'},
+    {'name' = 'Beyonder Deutschland', 'email' = 'hello@beyonder.de'},
 ]
 readme = "README.md"
 classifiers = [
@@ -55,7 +55,7 @@ dev = [
 [project.urls]
 'Homepage' = 'https://github.com/ambient-innovation/django-migration-zero/'
 'Documentation' = 'https://django-migration-zero.readthedocs.io/en/latest/index.html'
-'Maintained by' = 'https://ambient.digital/'
+'Maintained by' = 'https://beyonder.de/'
 'Bugtracker' = 'https://github.com/ambient-innovation/django-migration-zero/issues'
 'Changelog' = 'https://django-migration-zero.readthedocs.io/en/latest/features/changelog.html'
 

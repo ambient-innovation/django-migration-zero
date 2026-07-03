@@ -1,5 +1,6 @@
 from ambient_package_update.metadata.author import PackageAuthor
 from ambient_package_update.metadata.constants import (
+    DEPLOYMENT_STATUS_STABLE,
     DEV_DEPENDENCIES,
     LICENSE_MIT,
     SUPPORTED_DJANGO_VERSIONS,
@@ -15,15 +16,15 @@ METADATA = PackageMetadata(
     github_package_group="ambient-innovation",
     authors=[
         PackageAuthor(
-            name="Ambient Digital",
-            email="hello@ambient.digital",
+            name="Beyonder Deutschland",
+            email="hello@beyonder.de",
         ),
     ],
-    maintainer=PackageMaintainer(name="Ambient Digital", url="https://ambient.digital/", email="hello@ambient.digital"),
-    licenser="Ambient Innovation: GmbH",
+    maintainer=PackageMaintainer(name="Beyonder Deutschland", url="https://beyonder.de/", email="hello@beyonder.de"),
+    licenser="Beyonder Deutschland GmbH",
     license=LICENSE_MIT,
     license_year=2023,
-    development_status="5 - Production/Stable",
+    development_status=DEPLOYMENT_STATUS_STABLE,
     has_migrations=True,
     claim="Holistic implementation of 'migration zero' pattern for Django covering local changes and "
     "in-production database adjustments.",
