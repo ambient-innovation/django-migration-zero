@@ -14,7 +14,7 @@ management commands to recreate your migration files and updating your migration
 
 [PyPI](https://pypi.org/project/django-migration-zero/) • [GitHub](https://github.com/ambient-innovation/django-migration-zero) • [Full documentation](https://django-migration-zero.readthedocs.io/en/latest/index.html)
 
-Creator & Maintainer: [Ambient Digital](https://ambient.digital/)
+Creator & Maintainer: [Beyonder Deutschland](https://beyonder.de/)
 
 ## Features
 
