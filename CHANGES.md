@@ -1,7 +1,9 @@
 # Changelog
 
-**2.4.2** (2026-08-27)
-  * Maintenance updates via ambient-package-update
+**2.5.0** (2026-08-27)
+  * Added support for Django 6.1
+  * **Breaking change:** Dropped support for Django 4.2, whose extended support ended in April 2026
+  * Updated the linting and CI setup to the current ambient-package-update template
 
 **2.4.1** (2026-07-03)
   * Updated company and maintainer information to "Beyonder Deutschland"
