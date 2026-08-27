@@ -42,18 +42,14 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.11', '3.12', '3.13', '3.14', ]
-        django-version: ['42', '52', '60', ]
+        django-version: ['52', '60', '61', ]
 
         # Exclude Python/Django combinations that are not supported upstream.
         exclude:
           - python-version: '3.11'
             django-version: 60
-          - python-version: '3.13'
-            django-version: 42
-          - python-version: '3.14'
-            django-version: 42
-          - python-version: '3.14'
-            django-version: 52
+          - python-version: '3.11'
+            django-version: 61
 
     steps:
       - uses: actions/checkout@v6
