@@ -37,7 +37,7 @@ wheels = [
 
 [[package]]
 name = "ambient-package-update"
-version = "26.8.1"
+version = "26.8.3"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.13'",
@@ -48,9 +48,9 @@ dependencies = [
     { name = "typer" },
     { name = "uv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d7/31/555a4f56615503d3f95db5cd0b65645b5964f516767e535bc8558254c2e6/ambient_package_update-26.8.1.tar.gz", hash = "sha256:bb25efa94b2954d6011d3e8d35696f47e9f6ecea5ee467b0304800729c9a18ce", size = 50756, upload-time = "2026-08-25T13:09:34.444Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/bb/eb/5ca27ac7f0e246c560d13baa5c51087b7d300bb4024faa08f7b42d5edefa/ambient_package_update-26.8.3.tar.gz", hash = "sha256:218472e4693aa7a7b35f9a6ea2927770b0a6466ab1d9a95b270e1b18422e1553", size = 50998, upload-time = "2026-08-27T08:52:59.616Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/a6/dfb19d4d5746ab54b06bd1d94ef92db6ce9f324bd9ce34e97037386bd893/ambient_package_update-26.8.1-py3-none-any.whl", hash = "sha256:007a24ed3097a80c02ef1a71e3a491a1bbc4d7592d54c6e7634448aecc5828af", size = 52432, upload-time = "2026-08-25T13:09:33.303Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/8f/ac6bc944a9dc1c5c8444523cb7b81d7319498f52940dd66013c7a857ad70/ambient_package_update-26.8.3-py3-none-any.whl", hash = "sha256:c6758241295e6ba5011239632310ba1520a7f009e97dacc2b81460142f964bce", size = 52524, upload-time = "2026-08-27T08:52:58.473Z" },
 ]
 
 [[package]]
@@ -548,7 +548,7 @@ dependencies = [
 [package.optional-dependencies]
 dev = [
     { name = "ambient-package-update", version = "26.3.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
-    { name = "ambient-package-update", version = "26.8.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
+    { name = "ambient-package-update", version = "26.8.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
     { name = "freezegun" },
     { name = "keyring" },
     { name = "pre-commit" },

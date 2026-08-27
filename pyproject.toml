@@ -203,6 +203,8 @@ env_list = ["django52", "django60", "django61", ]
 # Django deprecation overview: https://www.djangoproject.com/download/
 package = "wheel"
 wheel_build_env = ".pkg"
+# This runner syncs from the lockfile and ignores "deps", so every environment below
+# installs its matrix Django version on top of the synced environment.
 runner = "uv-venv-lock-runner"
 extras = ["dev", ]
 commands = [
@@ -210,13 +212,13 @@ commands = [
 ]
 
 [tool.tox.env.django52]
-deps = ["Django==5.2.*"]
+commands_pre = [["uv", "pip", "install", "Django==5.2.*"]]
 
 [tool.tox.env.django60]
-deps = ["Django==6.0.*"]
+commands_pre = [["uv", "pip", "install", "Django==6.0.*"]]
 
 [tool.tox.env.django61]
-deps = ["Django==6.1.*"]
+commands_pre = [["uv", "pip", "install", "Django==6.1.*"]]
 
 [tool.tox.gh_actions.python]
 "3.11" = "py311"
