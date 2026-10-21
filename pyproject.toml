@@ -37,15 +37,15 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-   'typer~=0.19',
-   'pytest-cov~=7.0',
-   'pytest-django~=4.11',
-   'pytest-mock~=3.15',
-   'pre-commit~=4.3',
-   'sphinx~=7.4',
-   'sphinx-rtd-theme~=3.0',
+   'typer~=0.27',
+   'pytest-cov~=7.1',
+   'pytest-django~=4.14',
+   'pytest-mock~=3.17',
+   'pre-commit~=4.7',
+   'sphinx~=8.2',
+   'sphinx-rtd-theme~=3.1',
    'sphinx-mdinclude~=0.6',
-   'uv~=0.9',
+   'uv~=0.13',
    'keyring~=25.7',
    'ambient-package-update',
    'unittest-parametrize~=1.3',
@@ -203,9 +203,11 @@ env_list = ["django52", "django60", "django61", ]
 # Django deprecation overview: https://www.djangoproject.com/download/
 package = "wheel"
 wheel_build_env = ".pkg"
-# This runner syncs from the lockfile and ignores "deps", so every environment below
+# This runner installs via "uv sync" and ignores "deps", so every environment below
 # installs its matrix Django version on top of the synced environment.
 runner = "uv-venv-lock-runner"
+# uv.lock is not committed for libraries, so tox resolves fresh instead of asserting a lockfile.
+uv_sync_locked = false
 extras = ["dev", ]
 commands = [
     ["pytest", "--cov=django_migration_zero", "--cov-report=term", "--cov-report=xml", "--ds", "settings", "tests"]

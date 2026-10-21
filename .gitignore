@@ -81,6 +81,11 @@ target/
 profile_default/
 ipython_config.py
 
+# uv
+#   This is a library, so consumers never install from the lockfile. Not committing it avoids
+#   lockfile churn in every maintenance release.
+uv.lock
+
 # pdm
 #   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
 #pdm.lock
