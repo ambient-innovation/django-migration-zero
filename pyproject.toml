@@ -203,9 +203,11 @@ env_list = ["django52", "django60", "django61", ]
 # Django deprecation overview: https://www.djangoproject.com/download/
 package = "wheel"
 wheel_build_env = ".pkg"
-# This runner syncs from the lockfile and ignores "deps", so every environment below
+# This runner installs via "uv sync" and ignores "deps", so every environment below
 # installs its matrix Django version on top of the synced environment.
 runner = "uv-venv-lock-runner"
+# uv.lock is not committed for libraries, so tox resolves fresh instead of asserting a lockfile.
+uv_sync_locked = false
 extras = ["dev", ]
 commands = [
     ["pytest", "--cov=django_migration_zero", "--cov-report=term", "--cov-report=xml", "--ds", "settings", "tests"]
