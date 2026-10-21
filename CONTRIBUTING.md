@@ -36,9 +36,8 @@ To enable the configured pre-push hooks, you need to [install](https://pre-commi
 
     pre-commit install -t pre-push -t pre-commit --install-hooks
 
-This will permanently install the git hooks for both, frontend and backend, in your local
-[`.git/hooks`](./.git/hooks) folder.
-The hooks are configured in the [`.pre-commit-config.yaml`](templates/.pre-commit-config.yaml.tpl).
+This will permanently install the git hooks in your local `.git/hooks` folder.
+The hooks are configured in the [`.pre-commit-config.yaml`](./.pre-commit-config.yaml).
 
 You can check whether hooks work as intended using the [run](https://pre-commit.com/#pre-commit-run) command:
 

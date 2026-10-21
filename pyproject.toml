@@ -37,15 +37,15 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-   'typer~=0.19',
-   'pytest-cov~=7.0',
-   'pytest-django~=4.11',
-   'pytest-mock~=3.15',
-   'pre-commit~=4.3',
-   'sphinx~=7.4',
-   'sphinx-rtd-theme~=3.0',
+   'typer~=0.27',
+   'pytest-cov~=7.1',
+   'pytest-django~=4.14',
+   'pytest-mock~=3.17',
+   'pre-commit~=4.7',
+   'sphinx~=8.2',
+   'sphinx-rtd-theme~=3.1',
    'sphinx-mdinclude~=0.6',
-   'uv~=0.9',
+   'uv~=0.13',
    'keyring~=25.7',
    'ambient-package-update',
    'unittest-parametrize~=1.3',
