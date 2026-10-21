@@ -4,6 +4,7 @@
   * Updated the linting and CI setup to the current ambient-package-update template (ruff 0.17.1, `actions/checkout` v7, `actions/setup-python` v7)
   * Fixed the Sphinx configuration for sphinx-rtd-theme 3, removing the documentation build warnings
   * Fixed broken links in the pre-commit section of `CONTRIBUTING.md`
+  * Stopped committing `uv.lock`, since the package is a library and the lockfile never reaches its users
 
 **2.5.0** (2026-08-27)
   * Added support for Django 6.1
