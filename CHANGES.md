@@ -1,24 +1,9 @@
 # Changelog
 
 **2.5.1** (2026-10-21)
-
-* Bumped the rendered GitHub Actions to `actions/checkout` v7, `actions/setup-python` v7, `astral-sh/setup-uv` v10.3.0
-  and `sigstore/gh-action-sigstore-python` v3.5.0
-* Bumped the pre-commit hooks in this repository and in the rendered configuration to ruff 0.17.1, black 26.10.1 and
-  pyupgrade 3.22.0, and the rendered django-upgrade and djade hooks to 1.33.0 and 1.10.0
-* Set the blacken-docs line length to 120, matching ruff, since `ruff-format` now also formats Python code blocks in
-  Markdown and the two hooks would otherwise keep rewriting each other's output
-* Bumped the rendered dev dependencies: Sphinx 8.2, sphinx-rtd-theme 3.1, pytest-cov 7.1, pytest-django 4.14,
-  pytest-mock 3.17, pre-commit 4.7, typer 0.27 and uv 0.13
-* Bumped this tool's own dependencies to typer 0.27, uv 0.13 and pre-commit 4.7
-* Replaced the `display_version` theme option in the rendered Sphinx config, which sphinx-rtd-theme 3 no longer
-  supports, with `version_selector`
-* Removed `html_static_path` from the rendered Sphinx config, since packages ship no `docs/_static` directory and the
-  missing path made every documentation build emit a warning
-
-* Fixed broken links in the pre-commit section of the rendered `CONTRIBUTING.md`: the config link now points to the
-  package's `.pre-commit-config.yaml` and `.git/hooks` is no longer linked
-* Removed the "frontend and backend" wording from the rendered `CONTRIBUTING.md`, since the packages are Python-only
+  * Updated the linting and CI setup to the current ambient-package-update template (ruff 0.17.1, `actions/checkout` v7, `actions/setup-python` v7)
+  * Fixed the Sphinx configuration for sphinx-rtd-theme 3, removing the documentation build warnings
+  * Fixed broken links in the pre-commit section of `CONTRIBUTING.md`
 
 **2.5.0** (2026-08-27)
   * Added support for Django 6.1
