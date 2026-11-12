@@ -1,5 +1,8 @@
 # Changelog
 
+**2.6.0** (2026-11-12)
+  * Added support for Python 3.15 (with Django 6.1)
+
 **2.5.1** (2026-10-21)
   * Updated the linting and CI setup to the current ambient-package-update template (ruff 0.17.1, `actions/checkout` v7, `actions/setup-python` v7)
   * Fixed the Sphinx configuration for sphinx-rtd-theme 3, removing the documentation build warnings
