@@ -1,5 +1,13 @@
 # Changelog
 
+**2.6.1** (2026-11-18)
+  * Switched the maintenance tooling from ambient-package-update to package-foundry; its configuration now lives in
+    `.package-foundry/`
+  * Updated the development dependencies to Sphinx 9 (`sphinx~=9.0`) and typer 0.29; package-foundry is only installed
+    on Python 3.13 and newer
+  * Updated the ruff pre-commit hook to v0.17.5 and `astral-sh/setup-uv` to v10.3.3
+  * The documentation badge in the README is served by shields.io, and the Sphinx copyright names Beyonder GmbH
+
 **2.6.0** (2026-11-12)
   * Added support for Python 3.15 (with Django 6.1)
 

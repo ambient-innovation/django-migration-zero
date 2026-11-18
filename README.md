@@ -3,7 +3,7 @@
 [![Coverage](https://img.shields.io/badge/Coverage-100.0%25-success)](https://github.com/ambient-innovation/django-migration-zero/actions?workflow=CI)
 [![Linting](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Coding Style](https://img.shields.io/badge/code%20style-Ruff-000000.svg)](https://github.com/astral-sh/ruff)
-[![Documentation Status](https://readthedocs.org/projects/django-migration-zero/badge/?version=latest)](https://django-migration-zero.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://img.shields.io/readthedocs/django-migration-zero/latest)](https://django-migration-zero.readthedocs.io/en/latest/?badge=latest)
 
 Welcome to **django-migration-zero** - the holistic implementation of "migration zero" pattern for
 Django covering local changes and CI/CD pipeline adjustments.
@@ -123,9 +123,9 @@ Before the pipeline can run for the first time, an admin must:
 
 ### Maintenance
 
-Please note that this package supports the [ambient-package-update](https://pypi.org/project/ambient-package-update/).
+Please note that this package supports the [package-foundry](https://pypi.org/project/package-foundry/).
 So you don't have to worry about the maintenance of this package. This updater is rendering all important
 configuration and setup files. It works similar to well-known updaters like `pyupgrade` or `django-upgrade`.
 
-To run an update, refer to the [documentation page](https://pypi.org/project/ambient-package-update/)
-of the "ambient-package-update".
+To run an update, refer to the [documentation page](https://pypi.org/project/package-foundry/)
+of the "package-foundry".
