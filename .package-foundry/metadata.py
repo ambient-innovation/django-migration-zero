@@ -1,15 +1,15 @@
-from ambient_package_update.metadata.author import PackageAuthor
-from ambient_package_update.metadata.constants import (
+from package_foundry.metadata.author import PackageAuthor
+from package_foundry.metadata.constants import (
     DEPLOYMENT_STATUS_STABLE,
     DEV_DEPENDENCIES,
     LICENSE_MIT,
     SUPPORTED_DJANGO_VERSIONS,
     SUPPORTED_PYTHON_VERSIONS,
 )
-from ambient_package_update.metadata.maintainer import PackageMaintainer
-from ambient_package_update.metadata.package import PackageMetadata
-from ambient_package_update.metadata.readme import ReadmeContent
-from ambient_package_update.metadata.ruff_ignored_inspection import RuffIgnoredInspection
+from package_foundry.metadata.maintainer import PackageMaintainer
+from package_foundry.metadata.package import PackageMetadata
+from package_foundry.metadata.readme import ReadmeContent
+from package_foundry.metadata.ruff_ignored_inspection import RuffIgnoredInspection
 
 METADATA = PackageMetadata(
     package_name="django-migration-zero",

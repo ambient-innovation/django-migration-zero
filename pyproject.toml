@@ -38,17 +38,17 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-   'typer~=0.27',
+   'typer~=0.29',
    'pytest-cov~=7.1',
    'pytest-django~=4.14',
    'pytest-mock~=3.17',
    'pre-commit~=4.7',
-   'sphinx~=8.2',
+   'sphinx~=9.0',
    'sphinx-rtd-theme~=3.1',
    'sphinx-mdinclude~=0.6',
    'uv~=0.13',
    'keyring~=25.7',
-   'ambient-package-update',
+   'package-foundry; python_version >= "3.13"',
    'unittest-parametrize~=1.3',
    'freezegun~=1.5',
 ]
@@ -187,7 +187,7 @@ line-ending = "auto"
   # Checks for packages that are missing an __init__.py file
   "INP001",
 ]
-".ambient-package-update/*.py" = [
+".package-foundry/*.py" = [
   # Checks for packages that are missing an __init__.py file
   "INP001",
 ]
